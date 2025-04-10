@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxis I: Dryer Assessment | Memo Ozdincer Portfolio</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+     <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6 { font-weight: 600; margin-bottom: 0.75rem; color: #0A2463; /* Navy */ }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        h2 { font-size: 1.875rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb; }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #3E92CC; /* Steel */ }
+        h4 { font-size: 1.25rem; }
+        h5 { font-size: 1.125rem; }
+        p { margin-bottom: 1rem; color: #1C1C1C; /* Charcoal */ }
+        a { color: #0A2463; /* Navy */ text-decoration: none; }
+        a:hover { text-decoration: underline; color: #3E92CC; /* Steel */ }
+        ul, ol { margin-bottom: 1rem; margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        .ctmf-indicator { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+        .ctmf-frame { background-color: #3498db; } /* Blue */
+        .ctmf-diverge { background-color: #2ecc71; } /* Green */
+        .ctmf-converge { background-color: #f1c40f; } /* Yellow */
+        .ctmf-represent { background-color: #e74c3c; } /* Red */
+        figure { margin-bottom: 1.5rem; text-align: center; }
+        figcaption { font-size: 0.875rem; color: #6b7280; font-style: italic; text-align: center; margin-top: 0.5rem; }
+        .content-section { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #e5e7eb; }
+         .content-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; font-size: 0.875rem; }
+        th { background-color: #f3f4f6; font-weight: 600; }
+        .annotated-image { position: relative; display: inline-block; }
+        .annotation {
+            position: absolute;
+            background-color: rgba(255, 215, 0, 0.85); /* Accent Gold, slightly transparent */
+            color: #0A2463; /* Navy text */
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem; /* Smaller font */
+            max-width: 180px;
+            z-index: 10;
+            border: 1px solid #0A2463;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            pointer-events: none; /* Prevent hover issues */
+        }
+        blockquote { margin-top: 0.5rem; padding-left: 1rem; border-left: 3px solid #d1d5db; font-size: 0.875rem; color: #4b5563; font-style: italic; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0A2463',
+                        'steel': '#3E92CC',
+                        'accent-gold': '#FFD700',
+                        'light-gray': '#F5F5F5',
+                        'charcoal': '#1C1C1C'
+                    },
+                    fontFamily: {
+                        'sans': ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+                        'mono': ['IBM Plex Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light-gray text-charcoal">
+
+    <!-- Header -->
+     <header class="sticky top-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3">
+            <nav class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-navy m-0">Memo Ozdincer</h1>
+                    <p class="text-steel text-sm m-0">Student Engineer Design Portfolio</p>
+                </div>
+                <div class="space-x-6 text-navy font-medium">
+                    <a href="index.html#position" class="hover:text-steel">Position</a>
+                    <a href="index.html#projects" class="hover:text-steel">Projects</a>
+                    <a href="index.html#ctmfs" class="hover:text-steel">CTMFs</a>
+                    <a href="index.html#references" class="hover:text-steel">References</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Project Header -->
+        <section class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-navy mb-3">Praxis I: Dryer Performance Assessment</h1>
+            <p class="text-xl text-steel mb-6">Developing a User-Centered Solution for Chestnut Residence Laundry Facilities</p>
+             <figure class="max-w-2xl mx-auto">
+                 <div class="annotated-image">
+                    <img src="praxis1_hero_background.jpg" alt="Praxis I Project Background" class="w-full rounded-lg shadow-md opacity-80">
+                    <span class="annotation" style="top: 50%; left: 40%;">Laundry room context visual*</span>
+                </div>
+                 <figcaption>Fig 78: Praxis I Project Theme - Chestnut Residence Laundry</figcaption>
+            </figure>
+        </section>
+
+        <!-- Project Summary -->
+        <section id="summary" class="content-section bg-white p-8 rounded-lg shadow-md">
+             <h2 class="text-2xl font-bold text-navy mb-4">Project Summary</h2>
+            <p class="mb-4">The Praxis I project tackled user frustration with inconsistent dryer performance at Chestnut Residence. Residents wasted time and money re-running cycles due to dryers not reaching effective temperatures. The goal was to create a simple, reliable, low-cost method for residents and staff to verify dryer heating function.</p>
+            <p class="mb-4">Our team prioritized understanding user needs through stakeholder analysis (<a href="index.html#ctmf1" class="text-navy hover:underline">Stakeholder Analysis</a>) with residents and staff. Key requirements (<a href="index.html#ctmf2" class="text-navy hover:underline">Requirements Development</a>) emerged: simplicity, reusability (>50 cycles), clear binary indication (working/not working around 60-70°C), and safety.</p>
+            <p class="mb-4">Divergent ideation (<a href="index.html#ctmf6" class="text-navy hover:underline">Lotus Blossom</a>) explored electronic, chemical, mechanical, and phase-change concepts. Concept evaluation (<a href="index.html#ctmf7" class="text-navy hover:underline">Pugh Chart</a>, <a href="index.html#ctmf8" class="text-navy hover:underline">WDM</a>) favored a phase-change material (wax) solution for its inherent binary indication, simplicity, and low cost.</p>
+             <p class="mb-4">The final recommended design was a durable, two-chamber device: one chamber holding indicator wax formulated to melt at the target threshold, the other a reference material. Prototype testing (<a href="index.html#ctmf11" class="text-navy hover:underline">Prototype Testing</a>) validated the concept's feasibility, melting point accuracy, and durability. The project concluded with a design proposal and presentation (<a href="index.html#ctmf12" class="text-navy hover:underline">User-Focused Presentation</a>).</p>
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis1_final_recommendation.png" alt="Praxis I Final Recommendation - Wax Indicator" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm bg-white p-2">
+                    <span class="annotation" style="top: 25%; left: 10%;">Indicator Wax Chamber*</span>
+                    <span class="annotation" style="top: 65%; left: 70%;">Reference Material Chamber*</span>
+                    <span class="annotation" style="top: 80%; left: 30%;">Durable Casing*</span>
+                </div>
+                <figcaption>Fig 79: Visual representation of the final recommended wax-based indicator device</figcaption>
+            </figure>
+        </section>
+
+        <!-- Problem Framing & Stakeholders -->
+        <section id="framing" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">1. Problem Framing & Stakeholder Needs</h2>
+            <p class="mb-4">Chestnut Residence dryers performed inconsistently, causing resident frustration (wasted time/money) and diagnostic challenges for maintenance. We needed a simple way to check if dryers reached effective temperatures.</p>
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis1_stakeholder_map.png" alt="Stakeholder mapping for dryer assessment project" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 20%; left: 15%;">Residents (High Interest)*</span>
+                    <span class="annotation" style="top: 70%; left: 65%;">Maintenance Staff (High Influence)*</span>
+                </div>
+                <figcaption>Fig 80: Stakeholder interest-influence map for the dryer assessment project</figcaption>
+            </figure>
+            <p class="mb-4">Key insights from stakeholders (residents, staff, maintenance): need for simple binary indication, low cost, reusability, safety, and speed for maintenance checks.</p>
+             <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-600 rounded mb-4">
+                <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-frame"></span>CTMF Applied: Stakeholder Analysis (#1)</h4>
+                <p class="text-sm">Identified diverse needs: residents wanted simplicity/low cost; maintenance needed speed/reliability. Prioritizing these shaped requirements.</p>
+                <p class="text-sm mt-2"><strong>Assessment:</strong> Crucial for defining the need for a simple binary indicator, steering away from complex sensors. Direct engagement was key.</p>
+            </div>
+             <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-600 rounded">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-frame"></span>CTMF Applied: Requirements Development (#2)</h4>
+                 <p class="text-sm">Translated needs into measurable specs: Binary result at ~60-70°C, cost <$5, >50 cycles durability, non-toxic, quick check time.</p>
+                 <figure class="my-4">
+                     <div class="annotated-image">
+                        <img src="praxis1_requirements_hierarchy.png" alt="Requirements hierarchy for dryer indicator" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 10%; left: 10%;">Core Need: Verify Dryer Heat*</span>
+                        <span class="annotation" style="top: 40%; left: 60%;">User Req: Simple Indication*</span>
+                        <span class="annotation" style="top: 75%; left: 25%;">Technical Spec: Melt Point ~65°C*</span>
+                    </div>
+                    <figcaption>Fig 81: Requirements hierarchy example</figcaption>
+                </figure>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> Provided concrete targets (esp. temperature, cost) essential for evaluating concepts effectively.</p>
+            </div>
+        </section>
+
+        <!-- Concept Generation & Evaluation -->
+        <section id="concepts" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">2. Concept Generation & Evaluation</h2>
+            <p class="mb-4">We explored concepts using brainstorming and Lotus Blossom: electronic sensors, chemical strips, bimetallic strips, phase-change materials (wax, alloys).</p>
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis1_whiteboard_session.jpg" alt="Whiteboard ideation for dryer assessment" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 20%; left: 15%;">Exploring sensor ideas*</span>
+                    <span class="annotation" style="top: 70%; left: 70%;">Sketching passive indicators*</span>
+                </div>
+                <figcaption>Fig 82: Whiteboard documentation from concept generation</figcaption>
+            </figure>
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                 <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="praxis1_concept_sketch_1.jpg" alt="Concept sketch 1 - Electronic Sensor" class="w-full h-40 object-contain rounded-lg shadow bg-white p-1">
+                         <span class="annotation" style="top: 50%; left: 40%;">Pressure adjusted water vapor conditions*</span>
+                     </div>
+                     <figcaption>Fig 83. ater vapour indicator prototype*t</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="praxis1_concept_sketch_2.jpg" alt="Concept sketch 2 - Chemical Strip" class="w-full h-40 object-contain rounded-lg shadow bg-white p-1">
+                         <span class="annotation" style="top: 50%; left: 40%;">Color change material*</span>
+                     </div>
+                     <figcaption>Fig 84: Chemical strip concept</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="praxis1_concept_sketch_3.jpg" alt="Concept sketch 3 - Phase Change" class="w-full h-40 object-contain rounded-lg shadow bg-white p-1">
+                         <span class="annotation" style="top: 50%; left: 40%;">Bimetallic strip, flag indicator*</span>
+                     </div>
+                     <figcaption>Fig 85: Bimetallic Strip indicator </figcaption>
+                 </figure>
+             </div>
+             <p class="mb-4">Evaluation via Pugh charts and a WDM favored the phase-change (wax) concept due to simplicity, low cost, inherent binary indication, and reusability potential.</p>
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis1_evaluation_matrix.png" alt="Evaluation matrix for dryer assessment concepts" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 10%; left: 5%;">Criteria (Cost, Ease of Use)*</span>
+                    <span class="annotation" style="top: 40%; left: 70%;">Phase Change Concept Scores*</span>
+                    <span class="annotation" style="top: 80%; left: 80%;">Highest Total Score*</span>
+                </div>
+                <figcaption>Fig 86: Weighted decision matrix comparing concepts</figcaption>
+            </figure>
+             <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-600 rounded mb-4">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-diverge"></span>CTMF Applied: Lotus Blossom Method (#6)</h4>
+                 <p class="text-sm">Used to expand on "Dryer Temp Indication," branching into Electronic, Chemical, Mechanical, Phase Change categories, ensuring diverse approaches were considered.</p>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> Structured brainstorming, prevented early fixation on electronic solutions, led to considering phase-change materials.</p>
+            </div>
+              <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-converge"></span>CTMF Applied: Pugh Chart (#7) & WDM (#8)</h4>
+                 <p class="text-sm">Pugh chart screened options; WDM selected wax concept based on high weighting for cost, ease of use, and clarity.</p>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> Effective combination. WDM provided quantitative justification aligning with prioritized stakeholder needs (simplicity, low cost).</p>
+            </div>
+             <!-- Include WBN if used -->
+             <!-- <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-600 rounded">... WBN (#4) ...</div> -->
+        </section>
+
+        <!-- Design & Prototyping -->
+        <section id="design" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">3. Detailed Design & Prototyping</h2>
+            <p class="mb-4">The design featured a two-chamber device: Chamber 1 with indicator wax (melting ~65°C), Chamber 2 with a reference material. Prototyping involved testing waxes, designing/3D printing heat-resistant casings (PETG/ABS), and validating performance in ovens and dryers.</p>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="praxis1_concept_evolution_3.jpg" alt="Prototype testing in oven" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 30%; left: 15%;">Wax samples in oven*</span>
+                        <span class="annotation" style="top: 70%; left: 60%;">Temperature monitoring*</span>
+                    </div>
+                    <figcaption>Fig 87: Testing wax melting points in controlled oven environment</figcaption>
+                </figure>
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="praxis1_concept_evolution_4.jpg" alt="User testing mockup" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 40%; left: 40%;">Early 3D printed casing*</span>
+                    </div>
+                    <figcaption>Fig 88: Early prototype casing for user handling tests</figcaption>
+                </figure>
+             </div>
+             <div class="mt-4 p-4 bg-red-50 border-l-4 border-red-600 rounded">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-represent"></span>CTMF Applied: Prototype Testing Framework (#11)</h4>
+                 <p class="text-sm">Tests validated melting accuracy, casing durability (>50 cycles), and indication clarity post-cooling. Used controlled oven tests and real-world dryer tests.</p>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> Essential for confirming feasibility and refining the wax formulation and casing. Revealed practical challenges (e.g., wax clarity after re-solidifying) leading to design adjustments.</p>
+            </div>
+             <!-- Include other evolution images if available -->
+             <!-- <figure><div class="annotated-image"><img src="praxis1_concept_evolution_1.jpg" ...><span...></span></div><figcaption>Fig X: ...</figcaption></figure> -->
+             <!-- <figure><div class="annotated-image"><img src="praxis1_concept_evolution_2.jpg" ...><span...></span></div><figcaption>Fig X: ...</figcaption></figure> -->
+        </section>
+
+        <!-- Final Recommendation & Reflection -->
+        <section id="reflection" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">4. Final Recommendation & Reflection</h2>
+            <p class="mb-4">The final recommendation was the two-chamber wax indicator device, meeting key requirements: low cost, ease of use, clear binary indication, safety, and reusability.</p>
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis1_final_solution_diagram.png" alt="Final solution diagram for dryer indicator" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 20%; left: 10%;">Indicator Wax*</span>
+                    <span class="annotation" style="top: 70%; left: 75%;">Reference Material*</span>
+                    <span class="annotation" style="top: 50%; left: 45%;">Clear Casing*</span>
+                </div>
+                <figcaption>Fig 89: Diagram illustrating the final two-chamber wax indicator concept</figcaption>
+            </figure>
+            <h3 class="text-xl font-semibold text-steel mb-3 mt-6">Reflection</h3>
+            <p class="mb-4">This project underscored the value of user-centered design (<a href="#ctmf1" class="text-navy hover:underline">Stakeholder Analysis</a>) – understanding the *real* need led to a simple, effective solution over a potentially complex one. The iterative process of ideation, evaluation (<a href="#ctmf8" class="text-navy hover:underline">WDM</a>), and prototyping (<a href="#ctmf11" class="text-navy hover:underline">Prototype Testing</a>) was key. My analysis of Praxis I also revealed that tackling difficult sub-problems ('tangents'), like finding the right wax and ensuring indication clarity, often yielded the most critical insights, reinforcing my 'Embracing Discomfort' principle. Communicating this simple solution required clear framing (<a href="#ctmf12" class="text-navy hover:underline">User-Focused Presentation</a>) to highlight its effectiveness despite its simplicity.</p>
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis1_team_photo.jpg" alt="Praxis I Project Team" class="w-full md:w-1/2 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 50%; left: 50%;">Team with prototype components*</span>
+                </div>
+                <figcaption>Fig 90: Praxis I project team (Credit: Nancy Fang, Rada Anastanova, Jadon Tsai, Memo Ozdincer)</figcaption>
+            </figure>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+     <footer class="bg-navy text-light-gray mt-12 py-6">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p><a href="index.html" class="hover:underline">Back to Main Page</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

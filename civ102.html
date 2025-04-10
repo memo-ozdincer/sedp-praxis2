@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIV102 Bridge Design | Memo Ozdincer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+     <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6 { font-weight: 600; margin-bottom: 0.75rem; color: #0A2463; /* Navy */ }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        h2 { font-size: 1.875rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb; }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #3E92CC; /* Steel */ }
+        h4 { font-size: 1.25rem; }
+        h5 { font-size: 1.125rem; }
+        p { margin-bottom: 1rem; color: #1C1C1C; /* Charcoal */ }
+        a { color: #0A2463; /* Navy */ text-decoration: none; }
+        a:hover { text-decoration: underline; color: #3E92CC; /* Steel */ }
+        ul, ol { margin-bottom: 1rem; margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        .ctmf-indicator { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+        .ctmf-frame { background-color: #3498db; } /* Blue */
+        .ctmf-diverge { background-color: #2ecc71; } /* Green */
+        .ctmf-converge { background-color: #f1c40f; } /* Yellow */
+        .ctmf-represent { background-color: #e74c3c; } /* Red */
+        figure { margin-bottom: 1.5rem; text-align: center; }
+        figcaption { font-size: 0.875rem; color: #6b7280; font-style: italic; text-align: center; margin-top: 0.5rem; }
+        .content-section { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #e5e7eb; }
+         .content-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; font-size: 0.875rem; }
+        th { background-color: #f3f4f6; font-weight: 600; }
+        .annotated-image { position: relative; display: inline-block; }
+        .annotation {
+            position: absolute;
+            background-color: rgba(255, 215, 0, 0.85); /* Accent Gold, slightly transparent */
+            color: #0A2463; /* Navy text */
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem; /* Smaller font */
+            max-width: 180px;
+            z-index: 10;
+            border: 1px solid #0A2463;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            pointer-events: none; /* Prevent hover issues */
+        }
+        blockquote { margin-top: 0.5rem; padding-left: 1rem; border-left: 3px solid #d1d5db; font-size: 0.875rem; color: #4b5563; font-style: italic; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0A2463',
+                        'steel': '#3E92CC',
+                        'accent-gold': '#FFD700',
+                        'light-gray': '#F5F5F5',
+                        'charcoal': '#1C1C1C'
+                    },
+                    fontFamily: {
+                        'sans': ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+                        'mono': ['IBM Plex Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light-gray text-charcoal">
+
+    <!-- Header -->
+     <header class="sticky top-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3">
+            <nav class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-navy m-0">Memo Ozdincer</h1>
+                    <p class="text-steel text-sm m-0">Student Engineer Design Portfolio</p>
+                </div>
+                <div class="space-x-6 text-navy font-medium">
+                    <a href="index.html#position" class="hover:text-steel">Position</a>
+                    <a href="index.html#projects" class="hover:text-steel">Projects</a>
+                    <a href="index.html#ctmfs" class="hover:text-steel">CTMFs</a>
+                    <a href="index.html#references" class="hover:text-steel">References</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Project Header -->
+        <section class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-navy mb-3">CIV102 Matboard Bridge Design</h1>
+            <p class="text-xl text-steel mb-6">Optimizing Structural Efficiency Through Computational Analysis and Iterative Design</p>
+             <figure class="max-w-2xl mx-auto">
+                 <div class="annotated-image">
+                    <img src="civ102_hero_background.jpg" alt="CIV102 Bridge Design Background" class="w-full rounded-lg shadow-md opacity-80">
+                    <span class="annotation" style="top: 50%; left: 40%;">Conceptual bridge structure theme*</span>
+                </div>
+                 <figcaption>Fig 54: CIV102 Bridge Project Theme</figcaption>
+            </figure>
+        </section>
+
+        <!-- Project Summary -->
+        <section id="summary" class="content-section bg-white p-8 rounded-lg shadow-md">
+             <h2 class="text-2xl font-bold text-navy mb-4">Project Summary</h2>
+             <p class="mb-4">The CIV102 Engineering Mechanics and Design course challenged teams to design and construct a 1200mm span box girder bridge from matboard (max 0.825m²) to maximize structural efficiency (failure load / material area) under a moving train load. This required balancing multiple competing failure modes.</p>
+             <p class="mb-4">Our team (Team 706, including myself, Ella Mochoruk, and Ghazala Singh) embraced an analysis-driven approach. I developed a custom <a href="https://github.com/memo-ozdincer/box-girder-bridge-analyzer/" class="text-navy hover:underline"> Python-based structural analysis tool</a> (<a href="index.html#ctmf9" class="text-navy hover:underline">Engineering Analysis Framework</a>) to rapidly evaluate iterations. This tool calculated section properties, generated SFD/BMDs for the moving load, and assessed failure modes like material stress, shear, plate buckling, and stability. This aligned with my principles of analytical precision and systems thinking.</p>
+             <p class="mb-4">Through systematic iteration guided by the analysis, we evolved the design significantly. We used implicit SCAMPER-like modifications (<a href="index.html#ctmf5" class="text-navy hover:underline">SCAMPER</a>) - modifying height and web spacing, eliminating unnecessary flange material, and rearranging diaphragm placement. The final design featured variable web spacing, optimized diaphragms, and selective reinforcement, achieving a predicted Factor of Safety (FOS) of 1.20 (controlled by Flange Tip Buckling) while using only 45.6% of the allowed material.</p>
+            <p class="mb-4">Construction involved precise techniques and collaboration. Load testing (<a href="index.html#ctmf11" class="text-navy hover:underline">Prototype Testing</a>) validated our analysis, with failure at 538.41N (99.3% of prediction) in the expected mode. The project highlighted the power of computational analysis for optimization and the critical link between theoretical design and practical construction realities.</p>
+             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-center">
+                 <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">538 N</div>
+                     <div class="text-sm"> Predicted Failure Load</div>
+                 </div>
+                  <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">400 N</div>
+                     <div class="text-sm">Real Failure Load</div>
+                 </div>
+                  <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">45.6%</div>
+                     <div class="text-sm">Material Used</div>
+                 </div>
+                  <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">1.20</div>
+                     <div class="text-sm">Factor of Safety</div>
+                 </div>
+             </div>
+        </section>
+
+        <!-- Challenge & Requirements -->
+        <section id="challenge" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">1. The Structural Challenge & Requirements</h2>
+            <p class="mb-4">Maximize load capacity / material area for a 1200mm matboard bridge under a moving load, using ≤ 0.825m² material and only white glue. This required balancing strength against multiple failure modes within strict constraints.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="civ102_competition_setup.jpg" alt="Competition setup" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 20%; left: 10%;">Loading apparatus*</span>
+                        <span class="annotation" style="top: 70%; left: 60%;">Bridge support span (1200mm)*</span>
+                    </div>
+                    <figcaption>Fig 55: Official competition setup with loading apparatus</figcaption>
+                </figure>
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="civ102_train_load_diagram.png" alt="Train load diagram" class="w-full rounded-lg border border-gray-300 shadow-sm bg-white p-2">
+                        <span class="annotation" style="top: 30%; left: 25%;">Concentrated loads from 'train'*</span>
+                        <span class="annotation" style="top: 75%; left: 50%;">Moving load application points*</span>
+                    </div>
+                    <figcaption>Fig 56: Moving train load configuration diagram</figcaption>
+                </figure>
+            </div>
+             <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-600 rounded">
+                <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-frame"></span>CTMF Applied: Requirements Development (#2)</h4>
+                <p class="text-sm">Competition rules were translated into quantitative requirements (Span, Material Area, Maximize Load/Area) and constraints (Material Properties: Tensile=30MPa, Compressive=6MPa, Shear=4MPa, E=4GPa).</p>
+                <p class="text-sm mt-2"><strong>Assessment:</strong> Clear quantitative targets were essential for the analysis-driven optimization. Defining material properties as constraints was critical for accurate modeling.</p>
+            </div>
+        </section>
+
+        <!-- Analysis & Software -->
+        <section id="analysis" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">2. Computational Structural Analysis</h2>
+            <p class="mb-4">A custom Python tool automated analysis: calculating section properties, generating SFD/BMDs for the moving load, and assessing multiple failure modes (material stress, shear, plate buckling, stability). This allowed rapid iteration and optimization.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="civ102_python_analysis_code.png" alt="Python analysis code" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 15%; left: 10%;">Function for Moment of Inertia*</span>
+                        <span class="annotation" style="top: 55%; left: 65%;">Buckling stress calculation*</span>
+                    </div>
+                    <figcaption>Fig 57: Snippets of the custom Python structural analysis code</figcaption>
+                </figure>
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="civ102_failure_mode_analysis.png" alt="Failure envelope visualization" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 20%; left: 15%;">Applied Moment Curve*</span>
+                        <span class="annotation" style="top: 50%; left: 70%;">Flange Tip Buckling Capacity*</span>
+                        <span class="annotation" style="top: 80%; left: 40%;">Predicted Failure Point*</span>
+                    </div>
+                    <figcaption>Fig 58: Failure envelope analysis showing controlling failure modes</figcaption>
+                </figure>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 <figure>
+                    <div class="annotated-image">
+                        <img src="civ102_force_diagram_sfd.png" alt="Shear force diagram" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 20%; left: 10%;">Max Shear Force Location*</span>
+                    </div>
+                    <figcaption>Fig 59: Shear Force Diagram (SFD) under critical load</figcaption>
+                </figure>
+                 <figure>
+                    <div class="annotated-image">
+                        <img src="civ102_force_diagram_bmd.png" alt="Bending moment diagram" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 70%; left: 45%;">Max Bending Moment Location*</span>
+                    </div>
+                    <figcaption>Fig 60: Bending Moment Diagram (BMD) under critical load</figcaption>
+                </figure>
+            </div>
+             <figure class="my-4">
+                <div class="annotated-image">
+                    <img src="civ102_stress_distribution_analysis.png" alt="Stress distribution analysis" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 15%; left: 60%;">Max Compressive Stress (Top Flange)*</span>
+                    <span class="annotation" style="top: 80%; left: 60%;">Max Tensile Stress (Bottom Flange)*</span>
+                    <span class="annotation" style="top: 50%; left: 10%;">Neutral Axis Location*</span>
+                </div>
+                <figcaption>Fig 61: Stress distribution analysis across critical cross-section</figcaption>
+            </figure>
+             <p class="mb-4">The analysis revealed the critical load case and highlighted the interplay between failure modes – optimizing one often made another the limiting factor, necessitating a balanced approach.</p>
+             <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-converge"></span>CTMF Applied: Engineering Analysis Framework (#9)</h4>
+                <p class="text-sm">The custom Python tool integrated calculations for section properties, load analysis, and multiple failure modes. This allowed rapid, quantitative evaluation of design iterations against requirements, enabling evidence-based optimization.</p>
+                <p class="text-sm mt-2"><strong>Assessment:</strong> Cornerstone of the project's success. Enabled systematic optimization beyond manual calculation capabilities. Allowed precise balancing of competing failure modes. Embodied analytical precision and systems thinking.</p>
+            </div>
+        </section>
+
+        <!-- Design Evolution -->
+        <section id="design" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">3. Design Evolution & Final Design</h2>
+            <p class="mb-4">Guided by analysis, the design evolved iteratively: increasing height, optimizing web spacing, removing non-critical bottom flange material, adding optimized diaphragms, and reinforcing the top flange.</p>
+             <figure class="my-4">
+                <div class="annotated-image">
+                    <img src="civ102_bridge_designs_evolution.png" alt="Bridge design evolution" class="w-full md:w-3/4 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 10%; left: 5%;">Design 0 (Baseline)*</span>
+                    <span class="annotation" style="top: 40%; left: 30%;">Design 1 (Height Inc.)*</span>
+                    <span class="annotation" style="top: 60%; left: 55%;">Design 3 (Web Spacing)*</span>
+                </div>
+                <figcaption>Fig 62: Evolution of bridge cross-section design</figcaption>
+            </figure>
+            <div class="overflow-x-auto mb-6 shadow-sm rounded-lg border border-gray-200">
+                <table>
+                    <thead>
+                        <tr><th>Design</th><th>Key Changes</th><th>Controlling Mode</th><th>Min. FOS</th><th>Material (m²)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>Baseline box</td><td>Flange buckling</td><td>0.61</td><td>0.4102</td></tr>
+                        <tr><td>1</td><td>Increased height (140mm)</td><td>Flange buckling</td><td>0.85</td><td>0.4215</td></tr>
+                        <tr><td>3</td><td>Reduced web spacing (30mm)</td><td>Web buckling</td><td>0.95</td><td>0.4302</td></tr>
+                        <tr><td>5</td><td>Partial bottom flange removal</td><td>Flange tip buckling</td><td>1.08</td><td>0.4010</td></tr>
+                        <tr><td>7 (Final)</td><td>Variable webs, opt. diaphragms, reinforced top</td><td>Flange tip buckling</td><td>1.20</td><td>0.3765</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="mb-4">The final design (Design 7) achieved FOS=1.20 (controlled by FTB) using only 45.6% of material.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 <figure>
+                    <div class="annotated-image">
+                        <img src="civ102_final_design_render.png" alt="Final design render" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 15%; left: 10%;">Variable Web Spacing*</span>
+                        <span class="annotation" style="top: 50%; left: 70%;">Reinforced Top Flange*</span>
+                        <span class="annotation" style="top: 85%; left: 30%;">Optimized Diaphragms*</span>
+                    </div>
+                    <figcaption>Fig 63: Render of the final bridge design (Design 7)</figcaption>
+                </figure>
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="civ102_material_usage_diagram.png" alt="Material usage diagram" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 20%; left: 15%;">Top Flange Layout*</span>
+                        <span class="annotation" style="top: 50%; left: 50%;">Web Layout*</span>
+                        <span class="annotation" style="top: 80%; left: 75%;">Diaphragm Layout*</span>
+                    </div>
+                    <figcaption>Fig 64: Material allocation strategy for Design 7 (45.6% usage)</figcaption>
+                </figure>
+            </div>
+             <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-600 rounded">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-diverge"></span>CTMF Applied: SCAMPER Technique (#5) (Implicitly/Retrospectively)</h4>
+                 <p class="text-sm">The iterative refinement process implicitly used SCAMPER principles: Modifying dimensions, Eliminating non-critical material, Rearranging component spacing. Formal application might have structured this exploration.</p>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> The project succeeded through analysis-driven iteration, which aligns with SCAMPER's goal of systematic variation. Formal SCAMPER prompts could be useful in similar optimization tasks to ensure all modification avenues are considered.</p>
+            </div>
+        </section>
+
+        <!-- Construction -->
+        <section id="construction" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">4. Construction Process</h2>
+            <p class="mb-4">Construction demanded precision. Key techniques included optimizing material layout for cutting, using jigs for alignment, laminating flanges with staggered joints, and a modified folding technique for diaphragm stability. Collaboration was key: I focused on analysis, <span class="font-semibold">Ghazala Singh</span> on material optimization, and <span class="font-semibold">Ella Mochoruk</span> on construction techniques.</p>
+             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+                 <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="civ102_construction_process_1.jpg" alt="Material preparation" class="w-full h-24 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 50%; left: 30%;">Marking lines*</span>
+                     </div>
+                     <figcaption>Fig 65: Marking</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="civ102_construction_process_2.jpg" alt="Component cutting" class="w-full h-24 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 40%; left: 40%;">Precise cutting*</span>
+                     </div>
+                     <figcaption>Fig 66: Cutting</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="civ102_construction_process_3.jpg" alt="Assembly beginning" class="w-full h-24 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 30%; left: 20%;">Gluing flanges/webs*</span>
+                     </div>
+                     <figcaption>Fig 67: Initial Assy</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="civ102_construction_process_4.jpg" alt="Diaphragm installation" class="w-full h-24 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 50%; left: 50%;">Adding internal support*</span>
+                     </div>
+                     <figcaption>Fig 68: Diaphragms</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="civ102_construction_process_5.jpg" alt="Final assembly" class="w-full h-24 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 60%; left: 40%;">Completing box girder*</span>
+                     </div>
+                     <figcaption>Fig 69: Final Assy</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="civ102_construction_process_6.jpg" alt="Completed bridge" class="w-full h-24 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 50%; left: 50%;">Finished structure*</span>
+                     </div>
+                     <figcaption>Fig 70: Completed</figcaption>
+                 </figure>
+             </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 <figure>
+                    <div class="annotated-image">
+                        <img src="civ102_material_cutting_layout.jpg" alt="Material cutting layout" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 20%; left: 15%;">Nesting parts to minimize waste*</span>
+                        <span class="annotation" style="top: 70%; left: 65%;">Layout on matboard sheet*</span>
+                    </div>
+                    <figcaption>Fig 71: Efficient material cutting layout</figcaption>
+                </figure>
+                 <figure>
+                    <div class="annotated-image">
+                        <img src="civ102_component_sorting.jpg" alt="Component sorting" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 50%; left: 50%;">Organized parts pre-assembly*</span>
+                    </div>
+                    <figcaption>Fig 72: Sorted components ready for assembly</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Results & Reflection -->
+        <section id="results" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">5. Testing Results & Reflection</h2>
+            <p class="mb-4">Load testing validated the analysis: failure occurred at 400 (143 N lower than expected) via Flange Tip Buckling at the predicted location. This demonstrated that, while the code and raw calculations may suggest one thing, real life scenarios are much more complex, and hard to account for.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 <figure>
+                    <div class="annotated-image">
+                        <img src="civ102_load_test_setup.jpg" alt="Testing setup" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 40%; left: 45%;">Bridge under load*</span>
+                        <span class="annotation" style="top: 80%; left: 50%;">Loading mechanism*</span>
+                    </div>
+                    <figcaption>Fig 74: Bridge under load testing configuration</figcaption>
+                </figure>
+                 <figure>
+                    <div class="annotated-image">
+                        <img src="civ102_failure_analysis_photo.jpg" alt="Failure analysis" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 50%; left: 50%;">Buckling failure visible*</span>
+                        <span class="annotation" style="top: 70%; left: 20%;">Location matches prediction*</span>
+                    </div>
+                    <figcaption>Fig 75: Post-failure analysis showing FTB at the predicted location</figcaption>
+                </figure>
+            </div>
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="civ102_class_comparison_chart.png" alt="Class comparison chart" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 20%; left: 10%;">Team 706 Performance*</span>
+                    <span class="annotation" style="top: 60%; left: 70%;">Class Average Performance*</span>
+                </div>
+                <figcaption>Fig 76: Comparison of Team 706 performance vs. class average</figcaption>
+            </figure>
+             <div class="mt-4 p-4 bg-red-50 border-l-4 border-red-600 rounded mb-6">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-represent"></span>CTMF Applied: Prototype Testing Framework (#11)</h4>
+                 <p class="text-sm">The official competition load testing served as the validation test. The standardized procedure allowed direct comparison against predicted performance.</p>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> The close match between prediction and reality (99.3% accuracy on failure load, correct mode/location) provided strong validation for the Engineering Analysis Framework (#9) used. It offered definitive empirical evidence of the design's success.</p>
+            </div>
+             <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-converge"></span>CTMF Applied: Pugh Chart Analysis (#7) (Implicitly/Retrospectively)</h4>
+                 <p class="text-sm">The iterative design process implicitly compared variations against the previous design (baseline) using criteria like FOS, material use, and constructability, aligning with Pugh logic.</p>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> Formal Pugh Charts could have potentially streamlined early iterations by making comparisons more explicit, possibly reducing the number of full analysis cycles needed. Useful for structuring comparisons in optimization tasks.</p>
+            </div>
+            <h3 class="text-xl font-semibold text-steel mb-3 mt-6">Reflection</h3>
+            <p class="mb-4">This project was a powerful exercise in applying analytical precision and systems thinking to a constrained optimization problem. Developing the custom analysis tool was essential for navigating the complex interplay of failure modes. It reinforced the idea that optimization requires a holistic view, as improving one area often shifts the bottleneck. The discrepancy between theoretical perfection and construction realities (glue strength, alignment precision) was a key learning, emphasizing the need to integrate constructability into early design analysis. The project's success validated the analysis-driven iterative design approach.</p>
+            <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="civ102_final_bridge_photo.jpg" alt="Final bridge photo" class="w-full md:w-1/2 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 50%; left: 50%;">Final constructed bridge*</span>
+                </div>
+                <figcaption>Fig 77: The completed bridge, embodying iterative analysis and design</figcaption>
+            </figure>
+            <!-- Include civ102_bridge_calculations.pdf link if available -->
+            <!-- <p><a href="civ102_bridge_calculations.pdf" class="text-navy hover:underline">View Detailed Bridge Calculations (PDF)</a></p> -->
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+     <footer class="bg-navy text-light-gray mt-12 py-6">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p><a href="index.html" class="hover:underline">Back to Main Page</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

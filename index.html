@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo Ozdincer | Engineering Design Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6 { font-weight: 600; margin-bottom: 0.75rem; color: #0A2463; /* Navy */ }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        h2 { font-size: 1.875rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #3E92CC; /* Steel */ }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #3E92CC; /* Steel */ }
+        h4 { font-size: 1.25rem; }
+        h5 { font-size: 1.125rem; }
+        p { margin-bottom: 1rem; color: #1C1C1C; /* Charcoal */ }
+        a { color: #0A2463; /* Navy */ text-decoration: none; }
+        a:hover { text-decoration: underline; color: #3E92CC; /* Steel */ }
+        ul, ol { margin-bottom: 1rem; margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        .ctmf-indicator { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+        .ctmf-frame { background-color: #3498db; } /* Blue */
+        .ctmf-diverge { background-color: #2ecc71; } /* Green */
+        .ctmf-converge { background-color: #f1c40f; } /* Yellow */
+        .ctmf-represent { background-color: #e74c3c; } /* Red */
+        figure { margin-bottom: 1.5rem; text-align: center; }
+        figcaption { font-size: 0.875rem; color: #6b7280; font-style: italic; text-align: center; margin-top: 0.5rem; }
+        .content-section { margin-bottom: 4rem; padding-bottom: 3rem; border-bottom: 1px solid #e5e7eb; }
+        .content-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .sticky-nav { position: sticky; top: 80px; /* Adjust based on header height */ }
+        .annotated-image { position: relative; display: inline-block; /* Allows annotations relative to image */ }
+        .annotation {
+            position: absolute;
+            background-color: rgba(255, 215, 0, 0.85); /* Accent Gold, slightly transparent */
+            color: #0A2463; /* Navy text */
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem; /* Smaller font */
+            max-width: 180px;
+            z-index: 10;
+            border: 1px solid #0A2463;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            pointer-events: none; /* Prevent hover issues */
+        }
+        blockquote { margin-top: 0.5rem; padding-left: 1rem; border-left: 3px solid #d1d5db; font-size: 0.875rem; color: #4b5563; font-style: italic; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; font-size: 0.875rem; }
+        th { background-color: #f3f4f6; font-weight: 600; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0A2463',
+                        'steel': '#3E92CC',
+                        'accent-gold': '#FFD700',
+                        'light-gray': '#F5F5F5',
+                        'charcoal': '#1C1C1C'
+                    },
+                    fontFamily: {
+                        'sans': ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+                        'mono': ['IBM Plex Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light-gray text-charcoal">
+
+    <!-- Header -->
+    <header class="sticky top-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3">
+            <nav class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-navy m-0">Memo Ozdincer</h1>
+                    <p class="text-steel text-sm m-0">Student Engineer Design Portfolio</p>
+                </div>
+                <div class="space-x-6 text-navy font-medium">
+                    <a href="#intro" class="hover:text-steel">Introduction</a>
+                    <a href="#position" class="hover:text-steel">Position</a>
+                    <a href="#projects" class="hover:text-steel">Projects</a>
+                    <a href="#ctmfs" class="hover:text-steel">CTMFs</a>
+                    <a href="#references" class="hover:text-steel">References</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Introduction Section -->
+        <section id="intro" class="content-section text-center scroll-mt-20">
+             <figure class="max-w-xl mx-auto mb-6">
+                 <div class="annotated-image">
+                     <img src="profile-photo.jpg" alt="Memo Ozdincer" class=" mx-auto border-4 border-steel shadow-lg">
+                     <span class="annotation" style="top: 80%; left: 5%;"></span>
+                 </div>
+                 <figcaption>Fig 1: Final photo from Showcase, Apr. 8</figcaption>
+             </figure>
+            <h1 class="text-4xl font-bold text-navy mb-3">Engineering Design Portfolio</h1>
+            <p class="text-xl text-steel mb-6">Documenting an Evolving Design Practice</p>
+            <p class="max-w-3xl mx-auto text-lg mb-4">Welcome to my Student Engineer Design Portfolio, created for ESC102 Praxis II. This portfolio serves as both a showcase of my design work since September 2024 and a personal handbook documenting my evolving engineering design philosophy and the methodologies (CTMFs) I utilize.</p>
+            <p class="max-w-3xl mx-auto text-lg">It aims to demonstrate how I have changed as an engineer engaging in engineering design in class, my ability to express designs and arguments effectively, and my experiences working within design teams. This document reflects on key projects—<a href="utat.html" class="text-navy hover:underline">UTAT Servo Control</a>, <a href="civ102.html" class="text-navy hover:underline">CIV102 Bridge</a>, <a href="praxis1.html" class="text-navy hover:underline">Praxis I Dryer Assessment</a>, and <a href="praxis2.html" class="text-navy hover:underline">Praxis II LEGO Sorter</a>—using them as evidence for my design position and CTMF assessments. It is intended to be a useful reference for myself in future design activities and to provide insight into my design practice for the teaching team and potential collaborators.</p>
+        </section>
+
+        <!-- Position Statement Section -->
+        <section id="position" class="content-section scroll-mt-20">
+            <h2 class="text-3xl font-bold text-navy mb-6">My Engineering Design Philosophy</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-xl font-semibold text-steel mb-4">Introduction: Evolving Through Experience</h3>
+                    <p class="mb-4">My approach to engineering design is fundamentally shaped by practical experience and reflection, rather than purely theoretical ideals. It's an evolving philosophy, grounded in the projects I've completed (<a href="utat.html" class="text-navy hover:underline">UTAT</a>, <a href="civ102.html" class="text-navy hover:underline">CIV102</a>, <a href="praxis1.html" class="text-navy hover:underline">Praxis I</a>, <a href="praxis2.html" class="text-navy hover:underline">Praxis II</a>) and the conscious and subconscious patterns identified through them. I believe the most effective solutions to complex problems often emerge from a blend of creativity and painstaking effort, which usually reveals itself as simple, elegant, and easily communicable designs.</p>
+                    <p class="mb-4">This statement represents an iteration on my original position from January 2024. Experiences since then, particularly the deep technical dive in UTAT and the stakeholder-centric challenges in Praxis II, have refined my understanding. Key evolutions include a stronger emphasis on <span class="font-semibold">systematic problem decomposition</span> early on, a greater appreciation for <span class="font-semibold">quantifiable evidence</span> in decision-making (even for qualitative factors), and recognizing the crucial role of <span class="font-semibold">clear documentation</span> not just as a final step, but as an integral part of the design process itself. This portfolio is structured to reflect this philosophy, using project evidence to validate my position and assess the tools I employ.</p>
+
+                    <h3 class="text-xl font-semibold text-steel mb-4 mt-6">Core Values & Principles</h3>
+                    <p class="mb-4">My design practice is guided by:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 pl-4 text-sm">
+                        <li><strong>Methodical Progression:</strong> A structured, linear-first approach minimizes wasted effort, especially when tackling a problem initially.</li>
+                        <li><strong>Deep Focus:</strong> Intense concentration on specific, often difficult, aspects yields insights that frequently benefit the entire project (<a href="utat.html#analysis" class="text-navy hover:underline">UTAT Jitter Analysis</a>).</li>
+                        <li><strong>Embracing Discomfort:</strong> Actively seeking out challenging areas or knowledge gaps accelerates learning and often leads to the most significant breakthroughs (<a href="praxis1.html#reflection" class="text-navy hover:underline">Praxis I Tangents</a>).</li>
+                        <li><strong>Exposure & Familiarity First:</strong> Gaining initial broad exposure to concepts, even superficially, builds a foundation for faster, deeper understanding later (<a href="utat.html#summary" class="text-navy hover:underline">UTAT Initial Learning</a>).</li>
+                        <li><strong>Simplicity & Clarity:</strong> Striving for solutions that are fundamentally simple and can be communicated clearly and effectively (<a href="praxis1.html#solution" class="text-navy hover:underline">Praxis I Indicator</a>).</li>
+                        <li><strong>Evidence-Based Decisions:</strong> Grounding choices in quantifiable metrics and structured analysis whenever possible (<a href="civ102.html#analysis" class="text-navy hover:underline">CIV102 Analysis</a>, <a href="#ctmf8" class="text-navy hover:underline">WDM</a>).</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-steel mb-4 mt-6">My Design Process Model (Iterated)</h3>
+                    <p class="mb-4">My process, inspired by FDCR but emphasizing initial linearity and deep focus, follows these steps:</p>
+                    <ol class="list-decimal list-inside space-y-3 mb-4 pl-4 text-sm">
+                        <li><strong>Idea Flow (Foundation/Familiarity):</strong> Initial exposure and mental mapping without judgment. (FDCR Frame).
+                            <blockquote class="text-xs">Connection: Learning UTAT circuits via schematics before theory.</blockquote>
+                        </li>
+                        <li><strong>Embracing Discomfort (Catalyst):</strong> Identify and prioritize the hardest parts or knowledge gaps.
+                            <blockquote class="text-xs">Connection: Praxis I finding that breakthroughs came from tackling tangents.</blockquote>
+                        </li>
+                        <li><strong>Deep Focus (Implicit Brainstorming):</strong> Intense, distraction-free work on a narrow scope.
+                            <blockquote class="text-xs">Connection: Hours spent on the UTAT servo board led to identifying the signal pin current issue. See Fig 2 below.</blockquote>
+                        </li>
+                        <li><strong>Communication & Representation (Reality Check):</strong> Documenting and sharing for feedback. (FDCR Represent, but informs all).
+                            <blockquote class="text-xs">Connection: Praxis I report synthesis; this portfolio itself.</blockquote>
+                        </li>
+                    </ol>
+                     <figure class="my-6 text-center">
+                         <div class="annotated-image">
+                            <img src="utat_oscilloscope_before_jitter.jpg" alt="Oscilloscope capture showing signal issues before fix" class="w-full md:w-3/4 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                            <span class="annotation" style="top: 20%; left: 15%;">Voltage fluctuations observed during servo activation*</span>
+                            <span class="annotation" style="top: 70%; left: 65%;">PWM timing remained stable, pointing away from timing as root cause*</span>
+                        </div>
+                        <figcaption>Fig 2: Oscilloscope data from UTAT Deep Focus phase, revealing power issues not timing issues</figcaption>
+                    </figure>
+                    <p class="text-sm">After an initial pass, I revisit steps as needed, allowing for non-linear iteration informed by the first structured exploration.</p>
+
+                    <h3 class="text-xl font-semibold text-steel mb-4 mt-6">Strengths, Growth Areas, and Portfolio Framing</h3>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <h4 class="font-semibold text-navy mb-2">Strengths Leveraged</h4>
+                            <ul class="list-disc list-inside text-sm space-y-1">
+                                <li><strong>Analytical Precision:</strong> Evident in <a href="utat.html#analysis" class="text-navy hover:underline">UTAT</a> signal analysis and <a href="civ102.html#analysis" class="text-navy hover:underline">CIV102</a> structural modeling. Drives use of <a href="#ctmf9" class="text-navy hover:underline">Analysis Frameworks</a>.</li>
+                                <li><strong>Systems Thinking:</strong> Applied in considering interconnected failure modes in <a href="civ102.html#analysis" class="text-navy hover:underline">CIV102</a> and decomposing problems in <a href="praxis2.html#stakeholders" class="text-navy hover:underline">Praxis II</a> (<a href="#ctmf3" class="text-navy hover:underline">Decomposition</a>).</li>
+                                <li><strong>Implementation Focus:</strong> Guided practical choices in <a href="praxis2.html#development" class="text-navy hover:underline">Praxis II</a> prototyping and <a href="praxis1.html#design" class="text-navy hover:underline">Praxis I</a> solution simplicity.</li>
+                                <li><strong>Deep Focus Capability:</strong> Enabled breakthroughs in troubleshooting complex issues like the <a href="utat.html#analysis" class="text-navy hover:underline">UTAT jitter</a>.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <h4 class="font-semibold text-navy mb-2">Growth Areas Addressed</h4>
+                            <ul class="list-disc list-inside text-sm space-y-1">
+                                <li><strong>Collaborative Ideation:</strong> Actively sought in <a href="praxis2.html#concepts" class="text-navy hover:underline">Praxis II</a> using structured methods (<a href="#ctmf6" class="text-navy hover:underline">Lotus Blossom</a>). Still an area for continued development in early stages.</li>
+                                <li><strong>Communication Adaptability:</strong> Practiced tailoring explanations for ToroLUG in <a href="praxis2.html#solution" class="text-navy hover:underline">Praxis II</a> (<a href="#ctmf12" class="text-navy hover:underline">User-Focused Presentation</a>).</li>
+                                <li><strong>Embracing Ambiguity:</strong> Used tools like <a href="#ctmf4" class="text-navy hover:underline">WBN</a> in <a href="praxis2.html#concepts" class="text-navy hover:underline">Praxis II</a> to navigate early uncertainty more comfortably.</li>
+                                <li><strong>Balancing Perfectionism:</strong> Leveraged <a href="#ctmf9" class="text-navy hover:underline">Analysis Frameworks</a> (<a href="civ102.html#analysis" class="text-navy hover:underline">CIV102</a>) and <a href="#ctmf8" class="text-navy hover:underline">WDMs</a> (<a href="utat.html#design" class="text-navy hover:underline">UTAT</a>) to make objective decisions on "good enough".</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="text-sm">This portfolio is framed by my design philosophy: the project pages demonstrate the application of these principles and values, while the CTMF section assesses the tools that enable this practice, reflecting on their utility in strengthening my approach and addressing growth areas.</p>
+                </div>
+
+                <!-- Right Column: Visuals -->
+                <div class="md:col-span-1 space-y-6">
+                    <figure>
+                         <div class="annotated-image">
+                            <img src="position_identity_framework.png" alt="Engineering identity framework" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                            <span class="annotation" style="top: 10%; left: 10%;">Core Values*</span>
+                            <span class="annotation" style="top: 40%; left: 60%;">Design Principles*</span>
+                            <span class="annotation" style="top: 75%; left: 25%;">Strengths/Growth Areas*</span>
+                        </div>
+                        <figcaption>Fig 3: Visual representation of my engineering identity elements</figcaption>
+                    </figure>
+                    <figure>
+                         <div class="annotated-image">
+                            <img src="position_principles_diagram.png" alt="Design principles framework" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                            <span class="annotation" style="top: 15%; left: 40%;">Systems Thinking*</span>
+                            <span class="annotation" style="top: 60%; left: 10%;">Evidence-Based*</span>
+                            <span class="annotation" style="top: 60%; left: 70%;">Iterative Implementation*</span>
+                        </div>
+                        <figcaption>Fig 4: Visualization of core engineering design principles</figcaption>
+                    </figure>
+                     <figure>
+                         <div class="annotated-image">
+                            <img src="position_evolution_timeline.png" alt="Engineering philosophy evolution timeline" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                            <span class="annotation" style="top: 20%; left: 15%;">Jan 2024: Initial Position*</span>
+                            <span class="annotation" style="top: 50%; left: 45%;">Project Experiences*</span>
+                            <span class="annotation" style="top: 80%; left: 75%;">Current Position (Iterated)*</span>
+                        </div>
+                        <figcaption>Fig 5: Evolution of my design philosophy (Jan 2024 - Present)</figcaption>
+                    </figure>
+                    <figure>
+                         <div class="annotated-image">
+                            <img src="position_comparison_chart.png" alt="Before/after comparison of key philosophy changes" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                            <span class="annotation" style="top: 10%; left: 5%;">Key Area*</span>
+                            <span class="annotation" style="top: 30%; left: 30%;">Jan 2024 View*</span>
+                            <span class="annotation" style="top: 30%; left: 70%;">Current View*</span>
+                        </div>
+                        <figcaption>Fig 6: Comparison highlighting key shifts in my design position</figcaption>
+                    </figure>
+                    <!-- Placeholder for position_hero_background.jpg -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Overview Section -->
+        <section id="projects" class="content-section scroll-mt-20">
+            <h2 class="text-3xl font-bold text-navy mb-6">Design Projects</h2>
+            <p class="mb-8 text-lg">Summaries of key engineering design projects undertaken since September 2024. Each project page provides detailed evidence of my design process, application of specific CTMFs, and connection to my design philosophy.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Project 1: UTAT Servo Control Board -->
+                <a href="utat.html" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition border-t-4 border-navy">
+                    <figure class="m-0 relative">
+                        <div class="annotated-image">
+                            <img src="utat_board_implementation_photo.jpg" alt="UTAT Servo Control Board" class="w-full h-48 object-cover">
+                            <span class="annotation" style="top: 10%; left: 10%;">Final assembled board*</span>
+                        </div>
+                    </figure>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-navy mb-1">UTAT Servo Control</h3>
+                        <p class="text-sm text-gray-700 mb-3">Redesigned servo controller eliminating jitter for precision flight control.</p>
+                        <span class="text-xs font-semibold bg-navy text-white rounded-full px-2 py-1">2024</span>
+                    </div>
+                </a>
+
+                <!-- Project 2: CIV102 Bridge Design -->
+                <a href="civ102.html" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition border-t-4 border-navy">
+                     <figure class="m-0 relative">
+                         <div class="annotated-image">
+                            <img src="civ102_final_bridge_photo.jpg" alt="CIV102 Bridge Design" class="w-full h-48 object-cover">
+                            <span class="annotation" style="top: 70%; left: 40%;">Completed matboard bridge*</span>
+                        </div>
+                    </figure>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-navy mb-1">CIV102 Bridge</h3>
+                        <p class="text-sm text-gray-700 mb-3">Optimized matboard bridge achieving high strength-to-weight ratio via computational analysis.</p>
+                        <span class="text-xs font-semibold bg-navy text-white rounded-full px-2 py-1">2024</span>
+                    </div>
+                </a>
+
+                <!-- Project 3: Praxis I Project -->
+                <a href="praxis1.html" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition border-t-4 border-navy">
+                    <figure class="m-0 relative bg-gray-100">
+                        <div class="annotated-image p-2">
+                            <img src="praxis1_final_recommendation.png" alt="Praxis I Project Recommendation" class="w-full h-48 object-contain">
+                            <span class="annotation" style="top: 20%; left: 15%;">Wax indicator concept*</span>
+                            <span class="annotation" style="top: 60%; left: 65%;">Dual chamber design*</span>
+                        </div>
+                    </figure>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-navy mb-1">Praxis I: Dryer Assessment</h3>
+                        <p class="text-sm text-gray-700 mb-3">Developed a user-centered solution to assess dryer performance at Chestnut Residence.</p>
+                        <span class="text-xs font-semibold bg-navy text-white rounded-full px-2 py-1">2024</span>
+                    </div>
+                </a>
+
+                <!-- Project 4: Praxis II LEGO Sorter -->
+                <a href="praxis2.html" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition border-t-4 border-navy">
+                     <figure class="m-0 relative bg-gray-100">
+                         <div class="annotated-image p-2">
+                            <img src="praxis2_wax_device_technical_drawing_3d.png" alt="Praxis II LEGO Sorter 3D Drawing" class="w-full h-48 object-contain">
+                             <span class="annotation" style="top: 10%; left: 70%;">Feed mechanism*</span>
+                             <span class="annotation" style="top: 80%; left: 20%;">Sorting bins*</span>
+                         </div>
+                    </figure>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-navy mb-1">Praxis II: LEGO Sorter</h3>
+                        <p class="text-sm text-gray-700 mb-3">Designed and prototyped an automated LEGO brick sorter for the ToroLUG community.</p>
+                        <span class="text-xs font-semibold bg-navy text-white rounded-full px-2 py-1">2024</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- CTMF Overview & Detailed Sections -->
+        <section id="ctmfs" class="content-section scroll-mt-20">
+            <h2 class="text-3xl font-bold text-navy mb-6">Concepts, Tools, Models & Frameworks (CTMFs)</h2>
+            <p class="mb-8 text-lg">This section details the key CTMFs I utilize, organized by the Frame•Diverge•Converge•Represent (FDCR) model. Each entry includes a description, evidence of use from my projects, and a critical assessment of its utility and limitations, reflecting on its contribution to my design practice and connection to my philosophy.</p>
+
+             <!-- CTMF Integration Map -->
+             <figure class="mb-10">
+                 <div class="annotated-image">
+                    <img src="ctmf_integration_map.png" alt="CTMF integration map showing relationships between tools" class="w-full md:w-3/4 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 10%; left: 10%;">Frame Tools*</span>
+                    <span class="annotation" style="top: 30%; left: 70%;">Diverge Tools*</span>
+                    <span class="annotation" style="top: 60%; left: 60%;">Converge Tools*</span>
+                    <span class="annotation" style="top: 85%; left: 25%;">Represent Tools*</span>
+                </div>
+                <figcaption>Fig 8: Visualization of how CTMFs connect across the design process</figcaption>
+            </figure>
+
+            <!-- FDCR Sections -->
+            <div class="space-y-12">
+                <!-- FRAME -->
+                <div id="frame-details">
+                    <div class="flex items-center mb-4 pb-2 border-b border-blue-300">
+                        <span class="ctmf-indicator mr-3" style="width: 24px; height: 24px; background-color: #3498db;"></span>
+                        <h3 class="text-2xl font-semibold text-navy m-0">Frame CTMFs</h3>
+                    </div>
+                    <p class="mb-6 text-base text-gray-700">Tools for understanding context, defining requirements, and structuring the design space.</p>
+
+                    <!-- CTMF 1: Stakeholder Analysis -->
+                    <div id="ctmf1" class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-blue-600 scroll-mt-24">
+                        <h4 class="text-xl font-semibold text-navy mb-3">1. Stakeholder Analysis</h4>
+                        <p class="mb-3 text-sm">Systematic identification and prioritization of individuals/groups affected by a design, mapping their interest and influence.</p>
+                        <p class="text-sm mb-3"><strong>Application:</strong> Used in <a href="praxis2.html#stakeholders" class="text-navy hover:underline">Praxis II (LEGO Sorter)</a> to understand ToroLUG needs, revealing accuracy was paramount over speed.</p>
+                        <figure class="my-4">
+                            <div class="annotated-image">
+                                <img src="ctmf1_stakeholder_matrix.png" alt="Stakeholder matrix for LEGO sorter project" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 20%; left: 15%;">High Interest / High Influence (ToroLUG Leaders)*</span>
+                                <span class="annotation" style="top: 70%; left: 60%;">Low Influence / Medium Interest (Casual Users)*</span>
+                            </div>
+                            <figcaption>Fig 9: Stakeholder influence-interest matrix (Praxis II)</figcaption>
+                        </figure>
+                        <p class="text-sm font-semibold mt-4">Assessment:</p>
+                        <blockquote class="text-sm">Crucial for defining the *right* problem. Provides structure but requires direct engagement for nuances. Helps prioritize requirements effectively, aligning with evidence-based decisions. Connects to Systems Thinking by mapping the ecosystem. Useful early and when re-scoping.</blockquote>
+                        <p class="text-xs mt-2 text-gray-600">Lessons: Revisit throughout; combine with direct interviews.</p>
+                    </div>
+
+                    <!-- CTMF 2: Requirements Development -->
+                    <div id="ctmf2" class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-blue-600 scroll-mt-24">
+                         <h4 class="text-xl font-semibold text-navy mb-3">2. Requirements Development</h4>
+                        <p class="mb-3 text-sm">Translating stakeholder needs into specific, measurable, achievable, relevant, time-bound (SMART) design specifications.</p>
+                        <p class="text-sm mb-3"><strong>Application:</strong> Defined structural/material limits in <a href="civ102.html#challenge" class="text-navy hover:underline">CIV102 Bridge</a>. Set accuracy/speed targets in <a href="praxis2.html#stakeholders" class="text-navy hover:underline">Praxis II</a>, refined iteratively based on feedback.</p>
+                        <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf2_requirement_development.png" alt="Requirements development for bridge project" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 25%; left: 10%;">Functional Req: Load Capacity*</span>
+                                <span class="annotation" style="top: 65%; left: 75%;">Constraint: At least 99% accuracy*</span>
+                            </div>
+                            <figcaption>Fig 10: Requirements framework example (CIV102)</figcaption>
+                        </figure>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf2_proxy_test_framework.png" alt="Requirements validation through proxy testing" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 15%; left: 5%;">Test Objective linked to Req*</span>
+                                <span class="annotation" style="top: 55%; left: 60%;">Measurable Success Criterion*</span>
+                            </div>
+                            <figcaption>Fig 11: Validating requirements via proxy testing (Praxis II)</figcaption>
+                        </figure>
+                        <p class="text-sm font-semibold mt-4">Assessment:</p>
+                        <blockquote class="text-sm">Provides essential clarity, focus, and objective evaluation criteria. Supports Specificity of Purpose. Needs flexibility for evolution; rigid adherence can stifle innovation. Measurable criteria are key for evidence-based design.</blockquote>
+                        <p class="text-xs mt-2 text-gray-600">Lessons: Treat as living document; link explicitly to validation tests.</p>
+                    </div>
+
+                    </div>
+
+                <!-- DIVERGE -->
+                <div id="diverge-details" class="mt-12">
+                    <div class="flex items-center mb-4 pb-2 border-b border-green-300">
+                        <span class="ctmf-indicator mr-3" style="width: 24px; height: 24px; background-color: #2ecc71;"></span>
+                        <h3 class="text-2xl font-semibold text-navy m-0">Diverge CTMFs</h3>
+                    </div>
+                    <p class="mb-6 text-base text-gray-700">Techniques for generating diverse potential solutions and exploring the design space creatively.</p>
+
+                    <!-- CTMF 4: "Would Be Nice" Method -->
+                    <div id="ctmf4" class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-green-600 scroll-mt-24">
+                         <h4 class="text-xl font-semibold text-navy mb-3">4. "Would Be Nice" (WBN) Method</h4>
+                        <p class="mb-3 text-sm">Structured brainstorming encouraging exploration beyond core requirements by considering ideal features without immediate constraints.</p>
+                        <p class="text-sm mb-3"><strong>Application:</strong> Used in <a href="praxis2.html#concepts" class="text-navy hover:underline">Praxis II (LEGO Sorter)</a> to explore features like self-cleaning, leading to prioritization of color detection.</p>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf4_wbn_session.jpg" alt="Would Be Nice session for LEGO sorter" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 15%; left: 5%;">Brainstorming WBN ideas*</span>
+                                <span class="annotation" style="top: 70%; left: 70%;">Categorizing outputs*</span>
+                            </div>
+                            <figcaption>Fig 15: WBN session outputs (Praxis II)</figcaption>
+                        </figure>
+                         <figure class="my-4">
+                        </figure>
+                        <p class="text-sm font-semibold mt-4">Assessment:</p>
+                        <blockquote class="text-sm">Excellent for expanding thinking and identifying innovations. Helps navigate ambiguity. Requires rigorous prioritization (value vs. complexity) to prevent scope creep. Separates ideation from evaluation effectively.</blockquote>
+                        <p class="text-xs mt-2 text-gray-600">Lessons: Use quantitative criteria in prioritization phase.</p>
+                    </div>
+
+                    <!-- CTMF 5: SCAMPER Technique -->
+                    <div id="ctmf5" class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-green-600 scroll-mt-24">
+                         <h4 class="text-xl font-semibold text-navy mb-3">5. SCAMPER Technique</h4>
+                        <p class="mb-3 text-sm">Uses prompts (Substitute, Combine, Adapt, Modify, Put to another use, Eliminate, Reverse) to stimulate creative variations on existing designs.</p>
+                        <p class="text-sm mb-3"><strong>Application:</strong> Implicitly used in <a href="civ102.html#design" class="text-navy hover:underline">CIV102 Bridge</a> refinement (Modify web spacing, Eliminate flange parts). Used in <a href="praxis2.html#concepts" class="text-navy hover:underline">Praxis II</a> (Adapt industrial feeders).</p>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf5_scamper_bridge.png" alt="SCAMPER application for bridge design" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 10%; left: 5%;">Original Concept*</span>
+                                <span class="annotation" style="top: 40%; left: 60%;">Example 'Eliminate' Idea*</span>
+                                <span class="annotation" style="top: 75%; left: 25%;">Example 'Modify' Idea*</span>
+                            </div>
+                            <figcaption>Fig 17: SCAMPER applied to bridge design (CIV102)</figcaption>
+                        </figure>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf5_scamper_worksheet.png" alt="SCAMPER worksheet template" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 5%; left: 5%;">SCAMPER Prompts*</span>
+                                <span class="annotation" style="top: 50%; left: 50%;">Space for generated ideas*</span>
+                            </div>
+                            <figcaption>Fig 18: SCAMPER worksheet template</figcaption>
+                        </figure>
+                        <p class="text-sm font-semibold mt-4">Assessment:</p>
+                        <blockquote class="text-sm">Systematic way to explore variations and overcome fixation. Best for refining existing concepts. Complements analytical precision by providing structured creativity. Requires a starting point.</blockquote>
+                        <p class="text-xs mt-2 text-gray-600">Lessons: Combine with analysis to validate generated ideas.</p>
+                    </div>
+
+                    <!-- CTMF 6: Lotus Blossom Method -->
+                    <div id="ctmf6" class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-green-600 scroll-mt-24">
+                         <h4 class="text-xl font-semibold text-navy mb-3">6. Lotus Blossom Method</h4>
+                        <p class="mb-3 text-sm">Visual ideation expanding concepts outward from a central theme via related sub-themes in a grid structure.</p>
+                        <p class="text-sm mb-3"><strong>Application:</strong> Used in <a href="praxis2.html#concepts" class="text-navy hover:underline">Praxis II (LEGO Sorter)</a> to explore sorting mechanisms (vision, mechanical, sensor-based) from the core "LEGO Sorting" theme.</p>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf6_lotus_blossom.png" alt="Lotus Blossom for LEGO sorter concept generation" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 45%; left: 45%;">Central Theme*</span>
+                                <span class="annotation" style="top: 15%; left: 45%;">Primary Theme 1*</span>
+                                <span class="annotation" style="top: 75%; left: 15%;">Secondary Concepts for Theme 2*</span>
+                            </div>
+                            <figcaption>Fig 19: Lotus Blossom diagram (Praxis II)</figcaption>
+                        </figure>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf6_lotus_template.png" alt="Lotus Blossom template" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 50%; left: 50%;">Central Idea Placeholder*</span>
+                                <span class="annotation" style="top: 15%; left: 50%;">Theme Placeholder*</span>
+                            </div>
+                            <figcaption>Fig 20: Lotus Blossom template</figcaption>
+                        </figure>
+                        <p class="text-sm font-semibold mt-4">Assessment:</p>
+                        <blockquote class="text-sm">Provides visual structure for systematic, broad exploration while maintaining focus. Good for team ideation. Helps identify connections and hybrid opportunities. Can become complex if over-layered.</blockquote>
+                        <p class="text-xs mt-2 text-gray-600">Lessons: Ground primary themes in research; document cross-theme links.</p>
+                    </div>
+                </div>
+
+                <!-- CONVERGE -->
+                <div id="converge-details" class="mt-12">
+                     <div class="flex items-center mb-4 pb-2 border-b border-yellow-400">
+                        <span class="ctmf-indicator mr-3" style="width: 24px; height: 24px; background-color: #f1c40f;"></span>
+                        <h3 class="text-2xl font-semibold text-navy m-0">Converge CTMFs</h3>
+                    </div>
+                    <p class="mb-6 text-base text-gray-700">Methods for evaluating, comparing, and selecting promising solutions based on evidence and criteria.</p>
+
+                    <!-- CTMF 7: Pugh Chart Analysis -->
+                    <div id="ctmf7" class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-yellow-500 scroll-mt-24">
+                         <h4 class="text-xl font-semibold text-navy mb-3">7. Pugh Chart Analysis</h4>
+                        <p class="mb-3 text-sm">Compares alternatives against criteria relative to a baseline concept (+, -, S scoring). Useful for initial filtering and identifying hybrid opportunities.</p>
+                        <p class="text-sm mb-3"><strong>Application:</strong> Used in <a href="praxis2.html#concepts" class="text-navy hover:underline">Praxis II (LEGO Sorter)</a> to compare feeding mechanisms, leading to a hybrid design.</p>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf7_pugh_chart.png" alt="Pugh Chart for LEGO sorter feeding mechanisms" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 10%; left: 5%;">Criteria*</span>
+                                <span class="annotation" style="top: 30%; left: 25%;">Reference Concept (Datum)*</span>
+                                <span class="annotation" style="top: 50%; left: 50%;">Alternative Concept Scores (+/-/S)*</span>
+                                <span class="annotation" style="top: 85%; left: 80%;">Sum Scores*</span>
+                            </div>
+                            <figcaption>Fig 21: Pugh Chart comparing feeding mechanisms (Praxis II)</figcaption>
+                        </figure>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf7_pugh_template.png" alt="Pugh Chart template" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 50%; left: 50%;">Template structure*</span>
+                            </div>
+                            <figcaption>Fig 22: Pugh Chart template</figcaption>
+                        </figure>
+                        <p class="text-sm font-semibold mt-4">Assessment:</p>
+                        <blockquote class="text-sm">Efficient for early filtering and concept synthesis. Highlights specific strengths/weaknesses. Doesn't account for criteria weighting, making it less suitable for final selection alone. Facilitates team discussion.</blockquote>
+                        <p class="text-xs mt-2 text-gray-600">Lessons: Best used before WDM; consider criteria weighting separately.</p>
+                    </div>
+
+                    <!-- CTMF 8: Weighted Decision Matrix -->
+                    <div id="ctmf8" class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-yellow-500 scroll-mt-24">
+                         <h4 class="text-xl font-semibold text-navy mb-3">8. Adjusted Comparison Matrix]</h4>
+                        <p class="mb-3 text-sm">Due to the complex nature of this project, we decided to make an offshoot of the comparison amtrix that was supposed to mainly be helpful for seeing which requirements were hit best, and it ended up being really helpful in seeing how our prototypes compared to eachother (qualitatively)</p>
+                        <p class="text-sm mb-3"><strong>Application:</strong> Used in <a href="utat.html#design" class="text-navy hover:underline">UTAT Servo</a> to evaluate power distribution designs, prioritizing voltage stability. Used in <a href="praxis1.html#concepts" class="text-navy hover:underline">Praxis I</a> for final concept selection, used in Praxis II as described above. Figure shows Praxis 2 implementation</p>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf8_decision_matrix.png" alt="Weighted Decision Matrix for power distribution network designs" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 10%; left: 5%;">Criteria*</span>
+                                <span class="annotation" style="top: 10%; left: 25%;">Weights*</span>
+                                <span class="annotation" style="top: 50%; left: 50%;">Alternative Scores*</span>
+                                <span class="annotation" style="top: 85%; left: 80%;">Total Weighted Score*</span>
+                            </div>
+                            <figcaption>Fig 23: Weighted Decision Matrix (UTAT)</figcaption>
+                        </figure>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf8_matrix_template.png" alt="Weighted Decision Matrix template" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 50%; left: 50%;">Template structure with formulas*</span>
+                            </div>
+                            <figcaption>Fig 24: Weighted Decision Matrix template</figcaption>
+                        </figure>
+                        <p class="text-sm font-semibold mt-4">Assessment:</p>
+                        <blockquote class="text-sm">Strongly supports evidence-based decisions by quantifying trade-offs. Makes rationale transparent. Requires careful, potentially subjective, weight assignment. Numerical precision can imply false objectivity if inputs aren't robust.</blockquote>
+                        <p class="text-xs mt-2 text-gray-600">Lessons: Determine weights collaboratively; perform sensitivity analysis.</p>
+                    </div>
+
+
+                <!-- REPRESENT -->
+                <div id="represent-details" class="mt-12">
+                     <div class="flex items-center mb-4 pb-2 border-b border-red-300">
+                        <span class="ctmf-indicator mr-3" style="width: 24px; height: 24px; background-color: #e74c3c;"></span>
+                        <h3 class="text-2xl font-semibold text-navy m-0">Represent CTMFs</h3>
+                    </div>
+                    <p class="mb-6 text-base text-gray-700">Frameworks for documenting, communicating, and demonstrating design solutions effectively.</p>
+
+                    <!-- CTMF 10: Technical Documentation Framework -->
+                    <div id="ctmf10" class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-red-600 scroll-mt-24">
+                         <h4 class="text-xl font-semibold text-navy mb-3">10. Technical Documentation Framework</h4>
+                        <p class="mb-3 text-sm">Structured approach to recording and communicating design info (specs, rationale, visuals) accessibly for relevant stakeholders.</p>
+                        <p class="text-sm mb-3"><strong>Application:</strong> Used in <a href="utat.html#results" class="text-navy hover:underline">UTAT Servo</a> reports. Applied in <a href="praxis2.html#solution" class="text-navy hover:underline">Praxis II</a> annotated bibliography.</p>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf10_tech_documentation.png" alt="Technical documentation excerpt for servo control project" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 10%; left: 5%;">Clear Heading Structure*</span>
+                                <span class="annotation" style="top: 40%; left: 65%;">Annotated Visual Aid*</span>
+                                <span class="annotation" style="top: 75%; left: 15%;">Concise Explanation*</span>
+                            </div>
+                            <figcaption>Fig 27: Technical documentation example (UTAT)</figcaption>
+                        </figure>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf10_documentation_template.png" alt="Technical documentation template" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 5%; left: 5%;">Standard Sections (Intro, Req, Design, etc.)*</span>
+                                <span class="annotation" style="top: 50%; left: 50%;">Placeholder for Content*</span>
+                            </div>
+                            <figcaption>Fig 28: Documentation template example</figcaption>
+                        </figure>
+                        <p class="text-sm font-semibold mt-4">Assessment:</p>
+                        <blockquote class="text-sm">Crucial for knowledge preservation, communication, and traceability. Visuals and layering enhance accessibility. Most effective when integrated throughout the process, not just done at the end. Addresses communication adaptability growth area.</blockquote>
+                        <p class="text-xs mt-2 text-gray-600">Lessons: Integrate early; use visual techniques heavily.</p>
+                    </div>
+
+                    <!-- CTMF 11: Prototype Testing Framework -->
+                    <div id="ctmf11" class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-red-600 scroll-mt-24">
+                         <h4 class="text-xl font-semibold text-navy mb-3">11. Prototype Testing Framework</h4>
+                        <p class="mb-3 text-sm">Systematic methodology for evaluating prototypes against requirements using defined protocols, controlled variables, and success criteria.</p>
+                        <p class="text-sm mb-3"><strong>Application:</strong> Developed proxy tests in <a href="praxis2.html#development" class="text-navy hover:underline">Praxis II (LEGO Sorter)</a>. Used comprehensive protocols in <a href="utat.html#implementation" class="text-navy hover:underline">UTAT Servo</a>. Load testing in <a href="civ102.html#results" class="text-navy hover:underline">CIV102 Bridge</a>.</p>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf11_prototype_testing.png" alt="Prototype testing framework for LEGO sorter" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 10%; left: 10%;">Test Objective*</span>
+                                <span class="annotation" style="top: 40%; left: 70%;">Test Procedure*</span>
+                                <span class="annotation" style="top: 75%; left: 25%;">Success Criteria*</span>
+                            </div>
+                            <figcaption>Fig 29: Proxy testing framework (Praxis II)</figcaption>
+                        </figure>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf11_test_protocol_template.png" alt="Test protocol template" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 50%; left: 50%;">Standard test protocol sections*</span>
+                            </div>
+                            <figcaption>Fig 30: Test protocol template</figcaption>
+                        </figure>
+                        <p class="text-sm font-semibold mt-4">Assessment:</p>
+                        <blockquote class="text-sm">Provides essential empirical validation and structured feedback for iteration. Identifies unforeseen issues. Connects directly to evidence-based design. Can be resource-intensive but yields high value in de-risking designs.</blockquote>
+                        <p class="text-xs mt-2 text-gray-600">Lessons: Involve stakeholders in test planning; test early and often.</p>
+                    </div>
+
+                    <!-- CTMF 12: User-Focused Presentation Framework -->
+                    <div id="ctmf12" class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-red-600 scroll-mt-24">
+                         <h4 class="text-xl font-semibold text-navy mb-3">12. User-Focused Presentation Framework</h4>
+                        <p class="mb-3 text-sm">Structuring communication of technical info for non-technical stakeholders, emphasizing user value/context via accessible narratives and visuals.</p>
+                        <p class="text-sm mb-3"><strong>Application:</strong> Used in <a href="praxis2.html#solution" class="text-navy hover:underline">Praxis II (LEGO Sorter)</a> presentation to ToroLUG. Used in <a href="civ102.html#results" class="text-navy hover:underline">CIV102 Bridge</a> visuals for evaluators.</p>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf12_user_presentation.png" alt="User-focused presentation for LEGO sorter" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 15%; left: 5%;">Focus on User Value*</span>
+                                <span class="annotation" style="top: 50%; left: 60%;">Clear Visual Demonstration*</span>
+                                <span class="annotation" style="top: 80%; left: 20%;">Layered Technical Detail*</span>
+                            </div>
+                            <figcaption>Fig 31: User-focused presentation structure (Praxis II)</figcaption>
+                        </figure>
+                         <figure class="my-4">
+                             <div class="annotated-image">
+                                <img src="ctmf12_presentation_structure.png" alt="User-focused presentation structure" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                                <span class="annotation" style="top: 10%; left: 10%;">Start with Context/Problem*</span>
+                                <span class="annotation" style="top: 40%; left: 70%;">Show Solution & Value*</span>
+                                <span class="annotation" style="top: 75%; left: 25%;">Provide Technical Detail Selectively*</span>
+                            </div>
+                            <figcaption>Fig 32: Presentation structure with progressive disclosure</figcaption>
+                        </figure>
+                        <p class="text-sm font-semibold mt-4">Assessment:</p>
+                        <blockquote class="text-sm">Effective for bridging communication gaps and gaining stakeholder buy-in. Addresses communication adaptability growth area. Requires effort to translate technical details accurately but accessibly. Visuals and analogies are key.</blockquote>
+                        <p class="text-xs mt-2 text-gray-600">Lessons: Understand audience deeply; use interactive elements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- References Section -->
+        <section id="references" class="content-section scroll-mt-20">
+             <h2 class="text-3xl font-bold text-navy mb-6">References</h2>
+            <p class="mb-6 text-lg">The following references informed the design principles, methodologies, and technical approaches presented in this portfolio.</p>
+            <div class="space-y-8 text-sm">
+                <!-- Standards & Guidelines -->
+                <div>
+                    <h3 class="text-lg font-semibold text-steel mb-3">Standards & Guidelines</h3>
+                    <div class="pl-4 space-y-5">
+                        <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>International Organization for Standardization (ISO). (2018). <i>ISO 9241-11: Ergonomics of human-system interaction – Part 11: Usability: Definitions and concepts</i>. Retrieved from <a href="https://www.iso.org/standard/63500.html" class="text-navy hover:underline" target="_blank">ISO 9241-11</a></p>
+                            <blockquote>This part defines usability as the extent to which a product can be used by specified users to achieve specified goals with effectiveness, efficiency, and satisfaction in a specified context of use. It emphasizes that usability is an interaction outcome influenced by the user, task, equipment, and environment. This standard informed the user-centered aspects of the Praxis projects, ensuring focus on effectiveness and satisfaction for target users (residents, ToroLUG members).</blockquote>
+                        </div>
+                        <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>International Organization for Standardization (ISO). (2019). <i>ISO 9241-210: Ergonomics of human-system interaction – Part 210: Human-centred design for interactive systems</i>. Retrieved from <a href="https://www.iso.org/standard/52075.html" class="text-navy hover:underline" target="_blank">ISO 9241-210</a></p>
+                             <blockquote>Provides requirements and recommendations for a human-centred design process, emphasizing understanding users, specifying requirements, developing design solutions, and evaluating them iteratively. This standard directly guided the overall process followed in both Praxis I and Praxis II, particularly the emphasis on stakeholder engagement and iterative prototyping based on user feedback.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>Nielsen, J. (2020). <i>10 Usability Heuristics for User Interface Design</i>. Nielsen Norman Group. Retrieved from <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" class="text-navy hover:underline" target="_blank">NN/g Heuristics</a></p>
+                            <blockquote>A set of ten general principles for interaction design serving as practical rules-of-thumb. Heuristics like "Visibility of system status," "User control and freedom," and "Error prevention" were considered during the UI design phase of the Praxis II LEGO sorter and the indicator design in Praxis I, aiming for an intuitive user experience.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                             <p>International Electrotechnical Commission (IEC). (2018). <i>IEC 60812: Analysis techniques for system reliability - Procedure for failure mode and effects analysis (FMEA)</i>. Retrieved from <a href="https://webstore.iec.ch/publication/3571" class="text-navy hover:underline" target="_blank">IEC 60812</a></p>
+                             <blockquote>Details procedures for Failure Mode and Effects Analysis (FMEA). Although a formal FMEA wasn't conducted in these projects, the underlying principle of systematically identifying potential failure points informed the analysis in the CIV102 bridge project (considering multiple structural failure modes) and the UTAT servo project (troubleshooting jitter causes).</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>Professional Engineers Ontario. (n.d.). <i>Code of Ethics</i>. Regulation 941/90. Retrieved from <a href="https://www.peo.on.ca/public-protection/complaints-and-discipline/code-ethics" class="text-navy hover:underline" target="_blank">PEO Code of Ethics</a></p>
+                            <blockquote>Sets out the primary duty of professional engineers to public welfare, and principles of fidelity, competence, and fairness. This code underpins the ethical considerations in all projects, particularly regarding safety (CIV102, UTAT) and giving credit to teammates (Req 9).</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>University of Toronto. (n.d.). <i>Code of Behaviour on Academic Matters</i>. Retrieved from <a href="https://governingcouncil.utoronto.ca/secretariat/policies/code-behaviour-academic-matters-july-1-2019" class="text-navy hover:underline" target="_blank">UofT Academic Code</a></p>
+                            <blockquote>Defines academic integrity standards. Relevant for ensuring proper citation and giving credit for collaborative work within team projects, as required by portfolio Req 9.</blockquote>
+                        </div>
+                    </div>
+                </div>
+                <!-- Design Methodologies -->
+                 <div class="mt-8">
+                    <h3 class="text-lg font-semibold text-steel mb-3">Design Methodologies</h3>
+                    <div class="pl-4 space-y-5">
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>Cross, N. (2008). <i>Engineering Design Methods: Strategies for Product Design</i> (4th ed.). Wiley.</p>
+                            <blockquote>A foundational text providing a comprehensive overview of systematic engineering design methods. Concepts like functional decomposition, morphological charts, and objective evaluation methods discussed in this book informed the selection and application of various CTMFs used in my projects (e.g., #3, #6, #8).</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                             <p>Wang, L., Shen, W., Xie, H., Neelamkavil, J., & Pardasani, A. (2002). <i>Design for manufacturability and design for "X": Concepts, applications, and perspectives</i>. The International Journal of Advanced Manufacturing Technology, 19(4), 326-334.</p>
+                             <blockquote>Discusses the DfX philosophy, emphasizing consideration of lifecycle aspects during design. This perspective influenced thinking about constructability in the CIV102 bridge project and usability/maintainability in the Praxis projects.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>Pugh, S. (1991). <i>Total Design: Integrated Methods for Successful Product Engineering</i>. Addison-Wesley.</p>
+                             <blockquote>Introduces the Pugh Method (Pugh Chart, CTMF #7) for concept selection. This book provided the theoretical basis for using this method in Praxis II for initial concept screening and identifying hybrid opportunities based on comparative strengths and weaknesses relative to a datum.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>Serrat, O. (2017). <i>The SCAMPER Technique</i>. In Knowledge Solutions (pp. 311-314). Springer, Singapore.</p>
+                            <blockquote>Provides a detailed explanation of the SCAMPER technique (CTMF #5). This reference informed the structured application (even if implicit) of modification prompts during the refinement phases of the CIV102 bridge and Praxis II feeder mechanism designs.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>Ulrich, K. T., & Eppinger, S. D. (2016). <i>Product Design and Development</i> (6th ed.). McGraw-Hill Education.</p>
+                            <blockquote>A widely used textbook covering the product development process. Concepts related to requirements definition, concept generation, prototyping, and testing discussed here provided broader context for the methods applied in Praxis I and II.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>Dym, C. L., Agogino, A. M., Eris, O., Frey, D. D., & Leifer, L. J. (2005). <i>Engineering Design Thinking, Teaching, and Learning</i>. Journal of Engineering Education, 94(1), 103-120.</p>
+                            <blockquote>Discusses the cognitive processes involved in engineering design thinking. This paper informed my reflection on my own design process model, particularly the interplay between structured methods and implicit brainstorming during deep focus.</blockquote>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project-Specific & Technical References -->
+                 <div class="mt-8">
+                    <h3 class="text-lg font-semibold text-steel mb-3">Project-Specific & Technical References</h3>
+                    <div class="pl-4 space-y-5">
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                             <p>Ozdincer, M., & Konyk, M. (2024). <i>Servo Control Systems Jitter Analysis and PWM Testing</i>. University of Toronto Aerospace Team. UTAT-TR-1124-NOV24.</p>
+                             <blockquote>Internal technical report for the UTAT project. Contains the detailed signal analysis, LTSpice simulation results, PCB design rationale, and testing data referenced in the UTAT project section. Serves as primary evidence for that work.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                             <p>Ozdincer, M., et al. (2024). <i>Automatic LEGO Sorter for ToroLUG - Design Process Annotated Bibliography</i>. Team 52, ESC102 Praxis II, University of Toronto.</p>
+                             <blockquote>Annotated bibliography created for the Praxis II project. Documents sources related to computer vision, machine learning for object recognition, mechanical sorting systems, and stakeholder engagement methods used in the LEGO sorter design.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>BOX4BLOCKS LLC. (2009). <i>System, methodology, and product to sort, organize, and store toy building/construction sets</i>. (US Patent Application No. 2009/0261022 A1). U.S. Patent and Trademark Office.</p>
+                             <blockquote>Prior art research for the Praxis II project. Describes a commercial system for sorting LEGO-like blocks, primarily by size using stacked trays with different hole patterns. Helped differentiate our AI-based approach focused on type and feature recognition.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>Horowitz, P., & Hill, W. (2015). <i>The Art of Electronics</i> (3rd ed.). Cambridge University Press.</p>
+                            <blockquote>A standard reference text for electronics design. Principles related to power supply filtering, signal integrity, and component selection discussed in this book were applied during the UTAT servo control board redesign, particularly in addressing the power stability issues.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>Gere, J. M., & Goodno, B. J. (2012). <i>Mechanics of Materials</i> (8th ed.). Cengage Learning.</p>
+                            <blockquote>Textbook covering fundamental concepts of stress, strain, bending, shear, and buckling. Provided the theoretical basis for the structural analysis performed in the CIV102 bridge project, including the formulas used in the custom Python analysis tool.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>Python Software Foundation. (n.d.). <i>Python Language Reference</i>. Retrieved from <a href="https://docs.python.org/3/reference/index.html" class="text-navy hover:underline" target="_blank">Python Docs</a></p>
+                            <blockquote>Documentation for the Python programming language, used extensively for developing the custom structural analysis software in the CIV102 bridge project. Libraries like NumPy and Matplotlib were key.</blockquote>
+                        </div>
+                         <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <p>Analog Devices. (n.d.). <i>LTspice Simulator</i>. Retrieved from <a href="https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html" class="text-navy hover:underline" target="_blank">LTspice</a></p>
+                            <blockquote>Software used for circuit simulation in the UTAT servo control project. Allowed for modeling and testing of power supply filtering networks before physical implementation, crucial for optimizing the design efficiently.</blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-light-gray mt-12 py-6">
+        <div class="container mx-auto px-6 text-center text-sm">
+        </div>
+    </footer>
+
+</body>
+</html>

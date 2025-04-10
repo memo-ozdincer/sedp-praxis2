@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTAT Servo Control | Memo Ozdincer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6 { font-weight: 600; margin-bottom: 0.75rem; color: #0A2463; /* Navy */ }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        h2 { font-size: 1.875rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb; }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #3E92CC; /* Steel */ }
+        h4 { font-size: 1.25rem; }
+        h5 { font-size: 1.125rem; }
+        p { margin-bottom: 1rem; color: #1C1C1C; /* Charcoal */ }
+        a { color: #0A2463; /* Navy */ text-decoration: none; }
+        a:hover { text-decoration: underline; color: #3E92CC; /* Steel */ }
+        ul, ol { margin-bottom: 1rem; margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        .ctmf-indicator { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+        .ctmf-frame { background-color: #3498db; } /* Blue */
+        .ctmf-diverge { background-color: #2ecc71; } /* Green */
+        .ctmf-converge { background-color: #f1c40f; } /* Yellow */
+        .ctmf-represent { background-color: #e74c3c; } /* Red */
+        figure { margin-bottom: 1.5rem; text-align: center; }
+        figcaption { font-size: 0.875rem; color: #6b7280; font-style: italic; text-align: center; margin-top: 0.5rem; }
+        .content-section { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #e5e7eb; }
+         .content-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; font-size: 0.875rem; }
+        th { background-color: #f3f4f6; font-weight: 600; }
+        .annotated-image { position: relative; display: inline-block; }
+        .annotation {
+            position: absolute;
+            background-color: rgba(255, 215, 0, 0.85); /* Accent Gold, slightly transparent */
+            color: #0A2463; /* Navy text */
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem; /* Smaller font */
+            max-width: 180px;
+            z-index: 10;
+            border: 1px solid #0A2463;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            pointer-events: none; /* Prevent hover issues */
+        }
+        blockquote { margin-top: 0.5rem; padding-left: 1rem; border-left: 3px solid #d1d5db; font-size: 0.875rem; color: #4b5563; font-style: italic; }
+    </style>
+     <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0A2463',
+                        'steel': '#3E92CC',
+                        'accent-gold': '#FFD700',
+                        'light-gray': '#F5F5F5',
+                        'charcoal': '#1C1C1C'
+                    },
+                    fontFamily: {
+                        'sans': ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+                        'mono': ['IBM Plex Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light-gray text-charcoal">
+
+    <!-- Header -->
+    <header class="sticky top-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3">
+            <nav class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-navy m-0">Memo Ozdincer</h1>
+                    <p class="text-steel text-sm m-0">Student Engineer Design Portfolio</p>
+                </div>
+                <div class="space-x-6 text-navy font-medium">
+                    <a href="index.html#position" class="hover:text-steel">Position</a>
+                    <a href="index.html#projects" class="hover:text-steel">Projects</a>
+                    <a href="index.html#ctmfs" class="hover:text-steel">CTMFs</a>
+                    <a href="index.html#references" class="hover:text-steel">References</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Project Header -->
+        <section class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-navy mb-3">UTAT Servo Control Board</h1>
+            <p class="text-xl text-steel mb-6">Eliminating Jitter Through Precision Signal Integrity and Power Optimization</p>
+             <figure class="max-w-2xl mx-auto">
+                 <div class="annotated-image">
+                    <img src="utat_hero_background.jpg" alt="UTAT Servo Control Board Background" class="w-full rounded-lg shadow-md opacity-80">
+                    <span class="annotation" style="top: 50%; left: 40%;">UTAT Logo*</span>
+                </div>
+                 <figcaption>Fig 33: UTAT Servo Control Board Project Theme</figcaption>
+            </figure>
+        </section>
+
+        <!-- Project Summary -->
+        <section id="summary" class="content-section bg-white p-8 rounded-lg shadow-md">
+             <h2 class="text-2xl font-bold text-navy mb-4">Project Summary</h2>
+             <p class="mb-4">As part of the University of Toronto Aerospace Team's (UTAT) rocketry division, I addressed persistent servo jitter issues compromising flight control reliability. The servos we were using exhibited position instability (1-2° oscillations) despite using standard hardware, posing a risk to flight stability. The challenge was to identify the root cause and redesign the servo control board to ensure precise, jitter-free operation under demanding flight conditions (0-70°C, high EMI).</p>
+             <p class="mb-4">My approach involved systematic analysis (<a href="index.html#ctmf3" class="text-navy hover:underline">Problem Decomposition</a>) of potential causes including signal timing, power delivery, and EMI. Detailed signal integrity analysis (<a href="index.html#ctmf9" class="text-navy hover:underline">Engineering Analysis</a>) using oscilloscopes and LTSpice simulation revealed that power supply instability during servo activation, not PWM timing, was the primary cause. This deep focus on the electrical behavior was key. Based on this evidence, I redesigned the PCB layout, focusing on power distribution (wider traces, star topology), enhanced filtering (LC networks), improved grounding, and higher reliability connectors (<a href="index.html#ctmf8" class="text-navy hover:underline">Weighted Decision Matrix</a> used for component selection). This work was done in collaboration with teammate Markiyan Konyk, who focused on the schematic design.</p>
+             <p class="mb-4">The redesigned board was fabricated, assembled, and rigorously tested (<a href="index.html#ctmf11" class="text-navy hover:underline">Prototype Testing</a>). Testing confirmed the complete elimination of servo jitter, achieving position stability within ±0.1°. Power supply voltage droop under load was reduced below 50mV. The project successfully enhanced flight control reliability and provided valuable design guidelines for future UTAT projects. Schematic to lay out the board and to communicate the board's layout to members not directly involved in the project (<a href="index.html#ctmf10" class="text-navy hover:underline">Technical Documentation</a>) captured the analysis, design rationale, and results. While the board is to be assmbled in May, we have estimated some of the imporvements based on the documentation of each of the components:</p>
+             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-center">
+                 <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">100%</div>
+                     <div class="text-sm">Jitter Eliminated</div>
+                 </div>
+                  <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">±0.1°</div>
+                     <div class="text-sm">Position Accuracy</div>
+                 </div>
+                  <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">&lt;50mV</div>
+                     <div class="text-sm">Supply Droop</div>
+                 </div>
+                  <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">10</div>
+                     <div class="text-sm">Servo Channels</div>
+                 </div>
+             </div>
+        </section>
+
+        <!-- Problem Definition -->
+        <section id="problem" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">1. Problem Definition & Initial Investigation</h2>
+            <p class="mb-4">UTAT's rocketry flight control system experienced unreliable servo positioning (jitter), posing a significant risk. My initial step involved understanding the scope and potential causes, applying my 'Exposure & Familiarity First' principle by examining existing hardware and reported issues before diving into theory.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <figure>
+                    <div class="annotated-image">
+                        <img src="utat_servo_jitter_demonstration.gif" alt="Servo jitter demonstration" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 50%; left: 30%;">Erratic servo movement under load*</span>
+                    </div>
+                    <figcaption>Fig 34: Visible servo position instability during operation</figcaption>
+                </figure>
+                <figure>
+                    <div class="annotated-image">
+                        <img src="utat_system_configuration.jpg" alt="Current system configuration" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 20%; left: 10%;">Existing PCA9685 controller*</span>
+                        <span class="annotation" style="top: 70%; left: 60%;">Standard header pin connections*</span>
+                    </div>
+                    <figcaption>Fig 35: Original ground station configuration showing standard hardware</figcaption>
+                </figure>
+            </div>
+             <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-600 rounded">
+                <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-frame"></span>CTMF Applied: Problem Decomposition (#3)</h4>
+                <p class="text-sm">The problem was decomposed into potential root causes: Signal Integrity, Power Supply, EMI Susceptibility, and Thermal Considerations. This systematic approach prevented premature focus on timing issues and ensured all critical aspects were investigated.</p>
+                <p class="text-sm mt-2"><strong>Assessment:</strong> This structured breakdown was crucial. It made the complex problem manageable and directly led to investigating the power delivery aspect, which proved to be the root cause.</p>
+            </div>
+        </section>
+
+        <!-- Analysis & Simulation -->
+        <section id="analysis" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">2. Signal & Power Analysis (Deep Focus)</h2>
+            <p class="mb-4">Applying my 'Deep Focus' principle, I conducted detailed analysis. PWM signal timing analysis confirmed stability, ruling out timing as the primary cause. Oscilloscope measurements then revealed significant power supply voltage fluctuations during servo activation, correlating with the jitter. This phase required hours of focused examination of the board and signals.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <figure>
+                    <div class="annotated-image">
+                        <img src="utat_oscilloscope_before_jitter.jpg" alt="Oscilloscope capture showing signal issues" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 30%; left: 15%;">Significant voltage droop on power rail*</span>
+                        <span class="annotation" style="top: 65%; left: 50%;">PWM signal timing remains stable despite power noise*</span>
+                    </div>
+                    <figcaption>Fig 36: Oscilloscope capture showing power supply fluctuations during servo activation</figcaption>
+                </figure>
+                <figure>
+                    <div class="annotated-image">
+                        <img src="utat_power_supply_filter_simulation.png" alt="LTSpice simulation results" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 25%; left: 20%;">Simulated response of original filter network*</span>
+                        <span class="annotation" style="top: 70%; left: 60%;">Simulated response of improved filter network*</span>
+                    </div>
+                    <figcaption>Fig 37: LTSpice simulation comparing original vs. improved filter network response</figcaption>
+                </figure>
+            </div>
+            <p class="mb-4">LTSpice simulations modeled the power distribution network, confirming the voltage droop hypothesis and allowing rapid virtual testing of different filtering solutions before physical implementation.</p>
+             <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-converge"></span>CTMF Applied: Engineering Analysis Framework (#9)</h4>
+                <p class="text-sm">Combined empirical oscilloscope measurements with predictive LTSpice simulation. Measurements validated simulation accuracy (8-22% deviation), increasing confidence in using simulation to evaluate filter designs efficiently.</p>
+                <p class="text-sm mt-2"><strong>Assessment:</strong> Essential for identifying the root cause (power instability) and exploring solutions efficiently. Simulation significantly reduced prototyping needs for filter designs. Balancing simulation with measurement was key for model validation and aligns with my evidence-based approach.</p>
+            </div>
+        </section>
+
+        <!-- Design Optimization -->
+        <section id="design" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">3. PCB Design Optimization</h2>
+            <p class="mb-4">The analysis directly informed the PCB redesign, focusing on power integrity and reliability. Key changes included widened power traces, star-topology distribution, enhanced LC filtering, improved grounding, high-reliability screw terminals, a temperature-compensated oscillator, and better thermal management. This addressed the identified weaknesses systematically.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 <figure>
+                    <div class="annotated-image">
+                        <img src="utat_pcb_layout_original.png" alt="Original PCB design" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 40%; left: 10%;">Thin power traces (original)*</span>
+                        <span class="annotation" style="top: 70%; left: 60%;">Suboptimal ground plane*</span>
+                    </div>
+                    <figcaption>Fig 38: Original PCB layout showing inadequate power traces</figcaption>
+                </figure>
+                <figure>
+                    <div class="annotated-image">
+                        <img src="utat_pcb_layout_improved.png" alt="Improved PCB design" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 35%; left: 15%;">Widened power traces (40mil)*</span>
+                        <span class="annotation" style="top: 65%; left: 65%;">Improved ground plane coverage*</span>
+                    </div>
+                    <figcaption>Fig 39: Improved PCB layout with key enhancements</figcaption>
+                </figure>
+            </div>
+             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                 <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="utat_screw_terminal_closeup.jpg" alt="Screw terminal" class="w-full h-32 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 50%; left: 20%;">Robust screw connection*</span>
+                     </div>
+                     <figcaption>Fig 40: High-reliability screw terminal</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="utat_filter_network_closeup.jpg" alt="Filter network" class="w-full h-32 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 40%; left: 30%;">Inductor and Capacitor (LC Filter)*</span>
+                     </div>
+                     <figcaption>Fig 41: Enhanced LC filter network</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="utat_oscillator_closeup.jpg" alt="Temperature-compensated oscillator" class="w-full h-32 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 50%; left: 25%;">Stable clock source*</span>
+                     </div>
+                     <figcaption>Fig 42: Temp-compensated oscillator</figcaption>
+                 </figure>
+             </div>
+             <p class="mb-4 text-sm">Collaboration: I led the PCB layout and analysis, while teammate <span class="font-semibold">Markiyan Konyk</span> focused on the schematic design. We used Altium Designer for collaboration and held regular reviews with the UTAT Rocketry Avionics team.</p>
+             <figure class="my-4">
+                <div class="annotated-image">
+                    <img src="utat_board_implementation_photo.jpg" alt="Team design review" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 20%; left: 10%;">Presenting design changes*</span>
+                    <span class="annotation" style="top: 70%; left: 70%;">Receiving team feedback (the numbered comment boxes)*</span>
+                </div>
+                <figcaption>Fig 44: 3D view of the completed, new board made in Altium Designer</figcaption>
+            </figure>
+             <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-converge"></span>CTMF Applied: Weighted Decision Matrix (#8)</h4>
+                <p class="text-sm">Used to quantitatively evaluate component choices (e.g., connectors, filter components) against weighted criteria like reliability, performance, cost. Justified selecting screw terminals due to high reliability weighting for flight systems.</p>
+                <p class="text-sm mt-2"><strong>Assessment:</strong> Made trade-offs explicit and justifiable, aligning with evidence-based decisions. Crucial for prioritizing reliability in a safety-critical application.</p>
+            </div>
+        </section>
+        <!-- Results & Documentation -->
+        <section id="results" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">4. Results & Documentation</h2>
+            <p class="mb-4">The redesigned board successfully eliminated servo jitter, providing reliable and precise control critical for UTAT's flight systems. Performance metrics confirmed significant improvements in stability and accuracy.</p>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <figure>
+                    <div class="annotated-image">
+                        <img src="utat_technical_report_thumbnail.jpg" alt="Technical report" class="w-full md:w-1/2 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 50%; left: 30%;">Cover page of detailed report*</span>
+                    </div>
+                    <figcaption>Fig 52: Technical report cover page</figcaption>
+                </figure>
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="utat_design_guidelines_thumbnail.jpg" alt="Design guidelines" class="w-full md:w-1/2 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 40%; left: 25%;">Guideline on power trace width*</span>
+                    </div>
+                    <figcaption>Fig 53: Schematic to lay out the board and to communicate the board's layout to members not directly involved in the project</figcaption>
+                </figure>
+             </div>
+             <div class="mt-4 p-4 bg-red-50 border-l-4 border-red-600 rounded">
+                <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-represent"></span>CTMF Applied: Technical Documentation Framework (#10)</h4>
+                <p class="text-sm">Created detailed reports including analysis, design rationale, simulation results, test protocols, and performance data. Used annotated schematics and layout diagrams. Structured documentation for accessibility by team members with varying expertise.</p>
+                <p class="text-sm mt-2"><strong>Assessment:</strong> Essential for knowledge preservation and transfer within UTAT. Layering information and using visuals improved communication. Integrating documentation throughout the process was more effective than treating it as a final step. Addressed communication adaptability growth area.</p>
+            </div>
+             <h3 class="text-xl font-semibold text-steel mb-3 mt-6">Reflection</h3>
+             <p class="mb-4">This project strongly validated my design philosophy emphasizing deep focus and analytical precision. The systematic decomposition and evidence-based analysis were key to diagnosing a non-obvious root cause. The iterative process, combining simulation and rigorous testing, led to a robust solution. It highlighted the importance of power integrity in complex electronic systems and provided practical experience in high-reliability PCB design. Documenting the process ensured the lessons learned benefited the wider UTAT team.</p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-light-gray mt-12 py-6">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p><a href="index.html" class="hover:underline">Back to Main Page</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

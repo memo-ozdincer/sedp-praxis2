@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxis II: LEGO Sorter | Memo Ozdincer Portfolio</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+     <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6 { font-weight: 600; margin-bottom: 0.75rem; color: #0A2463; /* Navy */ }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        h2 { font-size: 1.875rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb; }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #3E92CC; /* Steel */ }
+        h4 { font-size: 1.25rem; }
+        h5 { font-size: 1.125rem; }
+        p { margin-bottom: 1rem; color: #1C1C1C; /* Charcoal */ }
+        a { color: #0A2463; /* Navy */ text-decoration: none; }
+        a:hover { text-decoration: underline; color: #3E92CC; /* Steel */ }
+        ul, ol { margin-bottom: 1rem; margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        .ctmf-indicator { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+        .ctmf-frame { background-color: #3498db; } /* Blue */
+        .ctmf-diverge { background-color: #2ecc71; } /* Green */
+        .ctmf-converge { background-color: #f1c40f; } /* Yellow */
+        .ctmf-represent { background-color: #e74c3c; } /* Red */
+        figure { margin-bottom: 1.5rem; text-align: center; }
+        figcaption { font-size: 0.875rem; color: #6b7280; font-style: italic; text-align: center; margin-top: 0.5rem; }
+        .content-section { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #e5e7eb; }
+         .content-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; font-size: 0.875rem; }
+        th { background-color: #f3f4f6; font-weight: 600; }
+        .annotated-image { position: relative; display: inline-block; }
+        .annotation {
+            position: absolute;
+            background-color: rgba(255, 215, 0, 0.85); /* Accent Gold, slightly transparent */
+            color: #0A2463; /* Navy text */
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem; /* Smaller font */
+            max-width: 180px;
+            z-index: 10;
+            border: 1px solid #0A2463;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            pointer-events: none; /* Prevent hover issues */
+        }
+        blockquote { margin-top: 0.5rem; padding-left: 1rem; border-left: 3px solid #d1d5db; font-size: 0.875rem; color: #4b5563; font-style: italic; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0A2463',
+                        'steel': '#3E92CC',
+                        'accent-gold': '#FFD700',
+                        'light-gray': '#F5F5F5',
+                        'charcoal': '#1C1C1C'
+                    },
+                    fontFamily: {
+                        'sans': ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+                        'mono': ['IBM Plex Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light-gray text-charcoal">
+
+    <!-- Header -->
+     <header class="sticky top-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3">
+            <nav class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-navy m-0">Memo Ozdincer</h1>
+                    <p class="text-steel text-sm m-0">Student Engineer Design Portfolio</p>
+                </div>
+                <div class="space-x-6 text-navy font-medium">
+                    <a href="index.html#position" class="hover:text-steel">Position</a>
+                    <a href="index.html#projects" class="hover:text-steel">Projects</a>
+                    <a href="index.html#ctmfs" class="hover:text-steel">CTMFs</a>
+                    <a href="index.html#references" class="hover:text-steel">References</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Project Header -->
+        <section class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-navy mb-3">Praxis II: Automated LEGO Brick Sorter</h1>
+            <p class="text-xl text-steel mb-6">Engineering an Accessible and Accurate Sorting Solution for ToroLUG</p>
+             <figure class="max-w-2xl mx-auto">
+                 <div class="annotated-image">
+                    <img src="praxis2_hero_background.jpg" alt="LEGO Sorter Background" class="w-full rounded-lg shadow-md opacity-80">
+                    <span class="annotation" style="top: 50%; left: 40%;">Visual theme of LEGO bricks*</span>
+                </div>
+                 <figcaption>Fig 91: Praxis II LEGO Sorter Project Theme</figcaption>
+            </figure>
+        </section>
+
+        <!-- Project Summary -->
+        <section id="summary" class="content-section bg-white p-8 rounded-lg shadow-md">
+             <h2 class="text-2xl font-bold text-navy mb-4">Project Summary</h2>
+             <p class="mb-4">Addressing the time-consuming task of manual LEGO sorting for the Toronto LEGO User Group (ToroLUG), this Praxis II project involved designing and prototyping an automated system. The primary goal, driven by stakeholder needs (<a href="index.html#ctmf1" class="text-navy hover:underline">Stakeholder Analysis</a>), was achieving high sorting accuracy (target 99%) for various piece types, including special printed/stickered ones, into user-defined categories.</p>
+             <p class="mb-4">Our team (Memo Ozdincer, Nancy Fang, Rada Anastanova, Jadon Tsai) followed a structured design process. After decomposing the problem (<a href="index.html#ctmf3" class="text-navy hover:underline">Problem Decomposition</a>) into functions like feeding, isolation, recognition, and sorting, we used divergent methods (<a href="index.html#ctmf4" class="text-navy hover:underline">WBN</a>, <a href="index.html#ctmf5" class="text-navy hover:underline">Personal Analogy</a>, <a href="index.html#ctmf6" class="text-navy hover:underline">Lotus Blossom</a>) to generate concepts. Evaluation (<a href="index.html#ctmf7" class="text-navy hover:underline">Pugh Chart</a>) led to a hybrid solution: a dual-stage feed/isolation mechanism, AI-powered computer vision recognition, and a servo-driven rotating sorting platform.</p>
+             <p class="mb-4">My core contributions focused on the recognition system development (AI model training, vision system integration) and the overall system integration and testing framework. Iterative prototyping (<a href="index.html#ctmf11" class="text-navy hover:underline">Prototype Testing</a>) was essential, especially for optimizing the feed system's piece isolation (achieving 94% success) which was critical for recognition accuracy. The final integrated prototype achieved 97% overall sorting accuracy at 16 pieces/minute, successfully demonstrating the concept's viability and meeting key user requirements. The project concluded with comprehensive documentation (<a href="index.html#ctmf10" class="text-navy hover:underline">Technical Documentation</a>) and a user-focused presentation (<a href="index.html#ctmf12" class="text-navy hover:underline">User-Focused Presentation</a>) to ToroLUG.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-center">
+                 <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">97%</div>
+                     <div class="text-sm">Sorting Accuracy</div>
+                 </div>
+                  <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">16</div>
+                     <div class="text-sm">Pieces/Minute</div>
+                 </div>
+                  <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">5+</div>
+                     <div class="text-sm">Custom Categories</div>
+                 </div>
+                  <div class="bg-light-gray p-3 rounded shadow-sm">
+                     <div class="text-2xl font-bold text-navy">100%</div>
+                     <div class="text-sm">Piece Preservation</div>
+                 </div>
+             </div>
+        </section>
+
+        <!-- Stakeholders & Requirements -->
+        <section id="stakeholders" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">1. Stakeholder Engagement & Requirements</h2>
+            <p class="mb-4">Engaging with ToroLUG members revealed that high accuracy (99% target) and handling special pieces were far more critical than raw speed. Customization of sorting categories was also essential.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="praxis2_stakeholder_map.png" alt="Stakeholder mapping for LEGO sorter" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 25%; left: 15%;">ToroLUG Members (Primary Users)*</span>
+                        <span class="annotation" style="top: 65%; left: 70%;">Potential Commercial Interest*</span>
+                    </div>
+                    <figcaption>Fig 92: Stakeholder map identifying ToroLUG priorities</figcaption>
+                </figure>
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="praxis2_requirements_hierarchy.png" alt="Requirements hierarchy for LEGO sorter" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 10%; left: 10%;">Core Need: Efficient Sorting*</span>
+                        <span class="annotation" style="top: 45%; left: 65%;">User Req: High Accuracy*</span>
+                        <span class="annotation" style="top: 80%; left: 30%;">Technical Spec: 99% Accuracy*</span>
+                    </div>
+                    <figcaption>Fig 93: Requirements hierarchy prioritizing accuracy</figcaption>
+                </figure>
+            </div>
+             <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-600 rounded mb-4">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-frame"></span>CTMF Applied: Stakeholder Analysis (#1)</h4>
+                 <p class="text-sm">Crucial for understanding the high value placed on accuracy over speed, fundamentally shaping the project's technical direction.</p>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> Validated the importance of direct user input to avoid designing based on incorrect assumptions.</p>
+            </div>
+             <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-600 rounded">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-frame"></span>CTMF Applied: Requirements Development (#2)</h4>
+                 <p class="text-sm">Formalized the 99% accuracy target and other key metrics (throughput, categories, no damage) providing clear evaluation criteria.</p>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> The high accuracy requirement drove the selection of AI-vision and necessitated focus on the feed system's reliability.</p>
+            </div>
+             <!-- Include Problem Decomposition if not already covered -->
+             <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-600 rounded">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-frame"></span>CTMF Applied: Problem Decomposition (#3)</h4>
+                 <p class="text-sm">System broken into Feed → Isolate → Recognize → Sort → Collect. Highlighted 'Isolate' as critical bottleneck for recognition accuracy.</p>
+                 <figure class="my-4">
+                     <div class="annotated-image">
+                        <img src="praxis2_functional_decomposition.png" alt="Functional decomposition of LEGO sorter" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 20%; left: 10%;">Input: Unsorted LEGOs*</span>
+                        <span class="annotation" style="top: 50%; left: 30%;">Function: Isolate Piece*</span>
+                        <span class="annotation" style="top: 80%; left: 80%;">Output: Sorted Bins*</span>
+                    </div>
+                    <figcaption>Fig 94: Functional decomposition diagram</figcaption>
+                </figure>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> Essential for managing complexity and focusing effort on the critical isolation sub-problem.</p>
+            </div>
+        </section>
+
+        <!-- Concept Generation & Evaluation -->
+        <section id="concepts" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">2. Concept Generation & Evaluation</h2>
+            <p class="mb-4">Multiple ideation methods generated diverse concepts. WBN explored aspirational goals (like cleaning), Personal Analogy highlighted piece fragility, and Lotus Blossom systematically explored mechanism types.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <figure>
+                    <div class="annotated-image">
+                        <img src="praxis2_wbn_workshop.jpg" alt="WBN Workshop" class="w-full h-40 object-cover rounded-lg shadow">
+                        <span class="annotation" style="top: 50%; left: 40%;">Team brainstorming 'nice-to-haves'*</span>
+                    </div>
+                    <figcaption>Fig 95: WBN Ideation Session</figcaption>
+                </figure>
+                 <figure>
+                    <div class="annotated-image">
+                        <img src="praxis2_personal_analogy_workshop.jpg" alt="Personal Analogy Session" class="w-full h-40 object-cover rounded-lg shadow">
+                        <span class="annotation" style="top: 50%; left: 40%;">Empathizing with LEGO piece*</span>
+                    </div>
+                    <figcaption>Fig 96: Personal Analogy Exercise</figcaption>
+                </figure>
+                 <figure>
+                    <div class="annotated-image">
+                        <img src="praxis2_morphological_chart.png" alt="Morphological chart derived from Lotus Blossom" class="w-full h-40 object-contain rounded-lg shadow bg-white p-1">
+                        <span class="annotation" style="top: 10%; left: 10%;">Function: Identify*</span>
+                        <span class="annotation" style="top: 40%; left: 60%;">Option: Computer Vision*</span>
+                        <span class="annotation" style="top: 75%; left: 25%;">Option: Weight Sensor*</span>
+                    </div>
+                    <figcaption>Fig 97: Morphological Chart Exploring Options</figcaption>
+                </figure>
+            </div>
+            <p class="mb-4">Pugh Chart analysis compared major concepts (Linear Conveyor, LEGO Shaker, Rotating Plate, Color Sorter UI), strongly favoring the AI/UI approach for accuracy and customization potential.</p>
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis2_concept_evaluation_matrix.png" alt="Concept Evaluation Matrix (Pugh Chart)" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 10%; left: 5%;">Criteria (Accuracy, Speed...)*</span>
+                    <span class="annotation" style="top: 40%; left: 75%;">Color Sorter UI Scores (+)*</span>
+                    <span class="annotation" style="top: 80%; left: 80%;">Highest Overall Score*</span>
+                </div>
+                <figcaption>Fig 98: Pugh Chart comparing major concepts</figcaption>
+            </figure>
+             <!-- Include concept images -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                 <figure class="m-0">
+                    <div class="annotated-image">
+                        <img src="praxis2_concept_linear_conveyor.jpg" alt="Linear Conveyor Concept" class="w-full h-32 object-cover rounded-lg shadow">
+                        <span class="annotation" style="top: 50%; left: 40%;">Belt system*</span>
+                    </div>
+                    <figcaption>Fig 99: Concept 1</figcaption>
+                </figure>
+                 <figure class="m-0">
+                    <div class="annotated-image">
+                        <img src="praxis2_concept_lego_shaker.jpg" alt="LEGO Shaker Concept" class="w-full h-32 object-cover rounded-lg shadow">
+                        <span class="annotation" style="top: 50%; left: 40%;">Vibrating trays*</span>
+                    </div>
+                    <figcaption>Fig 100: Concept 2</figcaption>
+                </figure>
+                 <figure class="m-0">
+                    <div class="annotated-image">
+                        <img src="praxis2_concept_rotating_plate.jpg" alt="Rotating Plate Concept" class="w-full h-32 object-cover rounded-lg shadow">
+                        <span class="annotation" style="top: 50%; left: 40%;">Turntable design*</span>
+                    </div>
+                    <figcaption>Fig 101: Concept 3</figcaption>
+                </figure>
+                 <figure class="m-0">
+                    <div class="annotated-image">
+                        <img src="praxis2_concept_color_sorter.jpg" alt="Color Sorter UI Concept" class="w-full h-32 object-cover rounded-lg shadow">
+                        <span class="annotation" style="top: 50%; left: 40%;">AI / Interface focus*</span>
+                    </div>
+                    <figcaption>Fig 102: Concept 4</figcaption>
+                </figure>
+            </div>
+             <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                 <div class="p-4 bg-green-50 border-l-4 border-green-600 rounded">
+                    <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-diverge"></span>WBN (#4)</h4>
+                    <p class="text-sm">Helped scope project by identifying 'cleaning' as low value/high complexity. Focused efforts on core sorting.</p>
+                </div>
+                 <div class="p-4 bg-green-50 border-l-4 border-green-600 rounded">
+                    <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-diverge"></span>Personal Analogy (#5)</h4>
+                    <p class="text-sm">Generated critical 'No Damage' requirement (#R11) by empathizing with the LEGO piece.</p>
+                </div>
+                 <div class="p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                    <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-converge"></span>Pugh Chart (#7)</h4>
+                    <p class="text-sm">Quickly highlighted the potential of the AI/UI concept for meeting accuracy/customization needs, guiding hybrid design.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development & Testing -->
+        <section id="development" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">3. Prototype Development & Testing</h2>
+            <p class="mb-4">Iterative prototyping focused on subsystems: Feed (P1), Recognition (P2), Sorting (P3), then Integration (P4). Proxy testing was key, especially for the feed system where isolation success improved from 68% to 94% through refinement (vibration + shutter).</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                 <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="praxis2_prototype_feed_system.jpg" alt="Feed System Prototype" class="w-full h-32 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 40%; left: 30%;">Initial funnel & shutter*</span>
+                     </div>
+                     <figcaption>Fig 103: P1 - Feed</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="praxis2_prototype_recognition.jpg" alt="Recognition System" class="w-full h-32 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 50%; left: 40%;">Camera & lighting setup*</span>
+                     </div>
+                     <figcaption>Fig 104: P2 - Recognition</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="praxis2_prototype_sorting.jpg" alt="Sorting Mechanism" class="w-full h-32 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 60%; left: 50%;">Rotating platform test*</span>
+                     </div>
+                     <figcaption>Fig 105: P3 - Sorting</figcaption>
+                 </figure>
+                  <figure class="m-0">
+                     <div class="annotated-image">
+                         <img src="praxis2_prototype_integrated.jpg" alt="Integrated System" class="w-full h-32 object-cover rounded-lg shadow">
+                         <span class="annotation" style="top: 30%; left: 15%;">Combined subsystems*</span>
+                         <span class="annotation" style="top: 75%; left: 70%;">Early integrated test*</span>
+                     </div>
+                     <figcaption>Fig 106: P4 - Integrated</figcaption>
+                 </figure>
+             </div>
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis2_testing_results_graph.png" alt="Testing Results Graph" class="w-full md:w-2/3 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 20%; left: 10%;">Prototype 1 Performance*</span>
+                    <span class="annotation" style="top: 70%; left: 80%;">Prototype 4 Performance*</span>
+                </div>
+                <figcaption>Fig 107: Performance metrics across prototype iterations</figcaption>
+            </figure>
+             <div class="mt-4 p-4 bg-red-50 border-l-4 border-red-600 rounded">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-represent"></span>CTMF Applied: Prototype Testing Framework (#11)</h4>
+                 <p class="text-sm">Developed proxy tests (Operational Reliability, UI/UX) with specific metrics (accuracy, cycle time, intuitiveness) linked to requirements. Used standardized brick sets.</p>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> Critical for identifying the feed system bottleneck and validating improvements. Provided quantitative evidence of meeting performance targets (97% accuracy, 16 pieces/min).</p>
+            </div>
+             <!-- Include team meeting photos -->
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis2_team_meeting_1.jpg" alt="Team functional analysis session" class="w-full mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 50%; left: 50%;">Team after Beta Release*</span>
+                </div>
+                <figcaption>Fig 108: Team after having finished beta release</figcaption>
+            </figure>
+        </section>
+
+        <!-- Final Solution & Reflection -->
+        <section id="solution" class="content-section scroll-mt-20">
+            <h2 class="text-2xl font-bold text-navy mb-4">4. Final Solution & Reflection</h2>
+            <p class="mb-4">The final design integrates AI vision with precision mechanical handling, achieving 97% accuracy across customizable categories at 16 pieces/minute. It features a dual-stage isolation feed, AI recognition (type, color, special features), and a rotating sorting platform.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="praxis2_final_solution_render.png" alt="LEGO Sorter Final Design Render" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 10%; left: 10%;">Input Hopper*</span>
+                        <span class="annotation" style="top: 40%; left: 75%;">Vision System Housing*</span>
+                        <span class="annotation" style="top: 85%; left: 50%;">Sorting Bins Area*</span>
+                    </div>
+                    <figcaption>Fig 109: Render of the final integrated LEGO sorter design</figcaption>
+                </figure>
+                 <figure>
+                     <div class="annotated-image">
+                        <img src="praxis2_feed_system_detail.png" alt="Feed System Detail" class="w-full rounded-lg border border-gray-300 shadow-sm">
+                        <span class="annotation" style="top: 25%; left: 15%;">Vibration Platform*</span>
+                        <span class="annotation" style="top: 65%; left: 70%;">Precision Shutter*</span>
+                    </div>
+                    <figcaption>Fig 110: Detail of the refined dual-stage feed/isolation mechanism</figcaption>
+                </figure>
+            </div>
+            <h3 class="text-xl font-semibold text-steel mb-3 mt-6">Reflection</h3>
+            <p class="mb-4">This project exemplified my design philosophy's focus on Specificity of Purpose – concentrating on the critical 99% accuracy requirement shaped the entire technical approach. Continuous stakeholder engagement (<a href="#ctmf1" class="text-navy hover:underline">Stakeholder Analysis</a>) was vital for aligning technical possibilities with real user value. Iterative prototyping (<a href="#ctmf11" class="text-navy hover:underline">Prototype Testing</a>) and tackling the difficult feed system (<a href="index.html#position" class="text-navy hover:underline">Embracing Discomfort</a>) were key to success. My work on the AI recognition system and testing framework directly applied my analytical strengths. Communicating the solution's value to ToroLUG (<a href="#ctmf12" class="text-navy hover:underline">User-Focused Presentation</a>) required translating technical accuracy into tangible user benefits (more building time).</p>
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis2_team_photo.jpg" alt="Praxis II Project Team" class="w-full md:w-1/2 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 50%; left: 50%;">Team working photo*</span>
+                </div>
+                <figcaption>Fig 111: Praxis II project team (Credit: Nancy Fang, Rada Atanasova, Jadon Tsai)</figcaption>
+            </figure>
+             <div class="mt-4 p-4 bg-red-50 border-l-4 border-red-600 rounded">
+                 <h4 class="font-semibold text-navy mb-2 flex items-center"><span class="ctmf-indicator ctmf-represent"></span>CTMF Applied: Documentation (#10) & Presentation (#12)</h4>
+                 <p class="text-sm">Comprehensive documentation traced design decisions to requirements/testing. Annotated bibliography linked choices to research. Final presentation focused on demonstrating value to ToroLUG, translating accuracy into user benefits.</p>
+                 <p class="text-sm mt-2"><strong>Assessment:</strong> Clear documentation ensured rigor and team alignment. User-focused presentation was crucial for stakeholder buy-in and demonstrating project success beyond technical metrics.</p>
+            </div>
+             <!-- Include other relevant images -->
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis2_lego_collection_unsorted.jpg" alt="Unsorted LEGO collection" class="w-full md:w-1/2 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 50%; left: 50%;">The problem: large unsorted collection*</span>
+                </div>
+                <figcaption>Fig 112: Typical unsorted LEGO collection facing ToroLUG members</figcaption>
+            </figure>
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis2_manual_sorting_process.jpg" alt="Manual sorting process" class="w-full md:w-1/2 mx-auto rounded-lg border border-gray-300 shadow-sm">
+                    <span class="annotation" style="top: 50%; left: 50%;">Time-consuming manual sorting*</span>
+                </div>
+                <figcaption>Fig 113: The time-consuming manual sorting process</figcaption>
+            </figure>
+             <!-- Include 3D drawing if not used elsewhere -->
+             <figure class="my-4">
+                 <div class="annotated-image">
+                    <img src="praxis2_wax_device_technical_drawing_3d.png" alt="Praxis II LEGO Sorter 3D Drawing" class="w-full md:w-1/2 mx-auto rounded-lg border border-gray-300 shadow-sm bg-white p-2">
+                    <span class="annotation" style="top: 15%; left: 75%;">CAD model view*</span>
+                    <span class="annotation" style="top: 80%; left: 25%;">Internal mechanism visualization*</span>
+                </div>
+                <figcaption>Fig 114: Technical 3D drawing of sorter concept</figcaption>
+            </figure>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+     <footer class="bg-navy text-light-gray mt-12 py-6">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p>&copy; 2025 Mehmet "Memo" Ozdincer. ESC102 Engineering Design Portfolio.</p>
+            <p><a href="index.html" class="hover:underline">Back to Main Page</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
